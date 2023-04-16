@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
+import "./css/index.css";
+
 import { nhost } from "./utils/nhost";
 import { NhostProvider } from "@nhost/react";
 import { NhostApolloProvider } from "@nhost/react-apollo";

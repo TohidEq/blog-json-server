@@ -1,0 +1,7 @@
+aside {
+  @apply min-h-screen text-white bg-purple 
+  w-14
+  sm:w-40
+  relative;
+}
+

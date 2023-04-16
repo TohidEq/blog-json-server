@@ -1,11 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-body{
-    font-family: 'Patrick Hand', cursive;
-    @apply
-        bg-gradient-to-br 
-        from-red-c to-purple-c 
-        text-white-c
-        h-screen ;
+/* body {
+  font-family: "Rubik", sans-serif;
+  @apply bg-dark-2;
+} */
+
+.App {
+  @apply container flex flex-nowrap mx-auto bg-white 
+    sm:rounded-md
+    pr-1
+    overflow-hidden;
 }
 
+main {
+  @apply bg-white max-h-screen min-h-screen overflow-hidden overflow-y-scroll w-full;
+}
+
+/* ==== scrollbar design ==== */
+/* Firefox */
+main {
+  --primary: transparent;
+  --secondary: cornflowerblue;
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+/* Chrome, Edge, and Safari */
+main::-webkit-scrollbar {
+  width: 10px;
+}
+
+main::-webkit-scrollbar-track {
+  background: var(--primary);
+  border-radius: 5px;
+}
+main::-webkit-scrollbar-thumb {
+  background-color: var(--secondary);
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+}
+/* ==== end scrollbar design ==== */

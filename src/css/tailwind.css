@@ -4,4 +4,4 @@
 @import "tailwindcss/variants";
 
 @import "./base/_page.css";
-
+@import "../components/Sidebar/Sidebar.css";
