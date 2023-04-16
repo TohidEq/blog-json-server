@@ -1,7 +1,29 @@
 aside {
   @apply min-h-screen text-white bg-purple 
   w-14
+  h-full
   sm:w-40
   relative;
 }
 
+aside .side-links-container {
+  @apply h-full;
+}
+
+aside .side-links {
+  @apply last:absolute last:bottom-0 flex flex-wrap;
+}
+aside .side-item {
+  @apply snap-center flex items-center w-full;
+}
+
+aside .side-item span {
+  @apply hidden sm:inline-block;
+}
+aside svg {
+  @apply w-5 h-5 p-2 overflow-hidden;
+}
+
+aside .side-profile {
+  @apply text-2xl;
+}
