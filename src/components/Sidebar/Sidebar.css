@@ -2,7 +2,7 @@ aside {
   @apply min-h-screen text-white bg-purple 
   w-14
   h-full
-  sm:w-40
+  sm:w-48
   relative;
 }
 
@@ -14,16 +14,19 @@ aside .side-links {
   @apply last:absolute last:bottom-0 flex flex-wrap;
 }
 aside .side-item {
-  @apply snap-center flex items-center w-full;
+  @apply snap-center flex items-center  w-full text-lg;
 }
 
 aside .side-item span {
   @apply hidden sm:inline-block;
 }
-aside svg {
-  @apply w-5 h-5 p-2 overflow-hidden;
+.side-links svg {
+  @apply sm:w-fit px-4 mx-auto sm:mx-0  sm:pl-[18px] sm:pr-3 py-3 overflow-hidden;
 }
 
 aside .side-profile {
   @apply text-2xl;
+}
+aside .side-profile svg {
+  @apply w-10 h-10 p-2 overflow-hidden;
 }

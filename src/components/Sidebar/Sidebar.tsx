@@ -4,22 +4,29 @@ import {
   faHome as fasHome,
   faHeart as fasHeart,
   faSearch as fasSearch,
-  faMoon as fasMoon,
   faQuestion as fasQues,
+  faMoon as fasDark,
+  faLightbulb as fasLight,
 } from "@fortawesome/free-solid-svg-icons";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import React from "react";
 
 import { Link, NavLink } from "react-router-dom";
+import useTheme from "../../hooks/useTheme";
 
 {
   // <FontAwesomeIcon icon={farHeart} />
   // <FontAwesomeIcon icon={faUser} />
 }
 
-type Props = {};
+type Props = {
+  mode: string;
+  changeMode: () => void;
+};
 
 const Sidebar = (props: Props) => {
+  const { changeMode, mode } = props;
+
   return (
     <aside>
       {/* Profile of SignIn/Up --> */}
@@ -47,9 +54,9 @@ const Sidebar = (props: Props) => {
         </div>
 
         <div className="side-links ">
-          <button className="side-item">
-            <FontAwesomeIcon icon={fasMoon} />
-            <span>Theme</span>
+          <button className="side-item" onClick={changeMode}>
+            <FontAwesomeIcon icon={mode == "dark" ? fasLight : fasDark} />
+            <span>{mode == "dark" ? "light" : "dark"}</span>
           </button>
           <NavLink to={"/about-us"} className="side-item">
             <FontAwesomeIcon icon={fasQues} />

@@ -627,7 +627,7 @@ aside{
 
 @media (min-width: 640px){
   aside{
-    width: 10rem;
+    width: 12rem;
   }
 }
 
@@ -650,6 +650,8 @@ aside .side-item{
   width: 100%;
   scroll-snap-align: center;
   align-items: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 aside .side-item span{
@@ -662,14 +664,35 @@ aside .side-item span{
   }
 }
 
-aside svg{
-  height: 1.25rem;
-  width: 1.25rem;
+.side-links svg{
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
-  padding: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+@media (min-width: 640px){
+  .side-links svg{
+    margin-left: 0px;
+    margin-right: 0px;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding-left: 18px;
+    padding-right: 0.75rem;
+  }
 }
 
 aside .side-profile{
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+aside .side-profile svg{
+  height: 2.5rem;
+  width: 2.5rem;
+  overflow: hidden;
+  padding: 0.5rem;
 }

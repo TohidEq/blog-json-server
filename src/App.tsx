@@ -9,35 +9,40 @@ import Layout from "./components/Layout";
 import SignUp from "./components/pages/SingInUp/SignUp";
 import SignIn from "./components/pages/SingInUp/SignIn";
 import NotFound from "./components/pages/NotFound";
+import useTheme from "./hooks/useTheme";
 
 function App() {
+  const { mode, changeMode } = useTheme();
+
   return (
-    <div className="App">
-      <BrowserRouter>
-        {/* Routes */}
-        <Sidebar />
-        <main>
-          <Routes>
-            {/* <Route path="/" element={<Home />} /> */}
-            <Route
-              path="/"
-              element={
-                <ProtectedRoute>
-                  <Layout />
-                </ProtectedRoute>
-              }
-            ></Route>
+    <div className={mode  }>
+      <div className={`App`}>
+        <BrowserRouter>
+          {/* Routes */}
+          <Sidebar mode={mode} changeMode={changeMode} />
+          <main>
+            <Routes>
+              {/* <Route path="/" element={<Home />} /> */}
+              <Route
+                path="/"
+                element={
+                  <ProtectedRoute>
+                    <Layout />
+                  </ProtectedRoute>
+                }
+              ></Route>
 
-            {/*==== test ======================*/}
-            <Route path="/lo" element={<Layout />} />
+              {/*==== test ======================*/}
+              <Route path="/lo" element={<Layout />} />
 
-            <Route path="/sign-up" element={<SignUp />} />
-            <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/sign-up" element={<SignUp />} />
+              <Route path="/sign-in" element={<SignIn />} />
 
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </main>
-      </BrowserRouter>
+              <Route path="/*" element={<NotFound />} />
+            </Routes>
+          </main>
+        </BrowserRouter>
+      </div>
     </div>
   );
 }
