@@ -15,7 +15,7 @@ function App() {
   const { mode, changeMode } = useTheme();
 
   return (
-    <div className={mode  }>
+    <div className={`${mode} base`}>
       <div className={`App`}>
         <BrowserRouter>
           {/* Routes */}

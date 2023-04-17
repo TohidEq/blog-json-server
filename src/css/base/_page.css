@@ -6,14 +6,14 @@
 } */
 
 .App {
-  @apply container flex flex-nowrap mx-auto bg-white 
-    sm:rounded-md
-    pr-1
-    overflow-hidden;
+  @apply container flex flex-nowrap mx-auto 
+    /* rounded-md just for test...  remove this later pls */
+    /* sm:rounded-md */
+    pr-1;
 }
 
 main {
-  @apply bg-white max-h-screen min-h-screen overflow-hidden overflow-y-scroll w-full;
+  @apply max-h-screen min-h-screen overflow-y-scroll w-full;
 }
 
 /* ==== scrollbar design ==== */
@@ -39,3 +39,13 @@ main::-webkit-scrollbar-thumb {
   border: 3px solid var(--primary);
 }
 /* ==== end scrollbar design ==== */
+
+/* theme colors */
+.base {
+  @apply bg-light-light-1;
+}
+
+/* dark mode */
+.dark.base {
+  @apply bg-dark-dark-2 text-light-light-1;
+}

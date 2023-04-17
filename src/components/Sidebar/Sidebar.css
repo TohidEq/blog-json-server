@@ -1,9 +1,14 @@
 aside {
-  @apply min-h-screen text-white bg-purple 
+  @apply min-h-screen
+  font-extrabold
   w-14
   h-full
   sm:w-48
   relative;
+}
+aside::after {
+  content: "";
+  @apply absolute  h-screen w-screen top-0 right-full;
 }
 
 aside .side-links-container {
@@ -14,7 +19,7 @@ aside .side-links {
   @apply last:absolute last:bottom-0 flex flex-wrap;
 }
 aside .side-item {
-  @apply snap-center flex items-center  w-full text-lg;
+  @apply snap-center transition-colors duration-150 flex items-center  w-full text-lg;
 }
 
 aside .side-item span {
@@ -27,6 +32,35 @@ aside .side-item span {
 aside .side-profile {
   @apply text-2xl;
 }
+aside .side-profile span {
+  @apply pl-1;
+}
 aside .side-profile svg {
   @apply w-10 h-10 p-2 overflow-hidden;
+}
+
+/* theme colors */
+aside {
+  @apply bg-light-dark-2 text-light-light-1;
+}
+
+aside::after {
+  @apply bg-light-dark-2;
+}
+aside .side-item:hover,
+aside .side-item.active {
+  @apply bg-light-light-1 text-light-dark-2;
+}
+
+/* dark mode */
+.dark aside {
+  @apply bg-dark-dark-1;
+}
+.dark aside::after {
+  @apply bg-dark-dark-1;
+}
+
+.dark aside .side-item:hover,
+.dark aside .side-item.active {
+  @apply text-light-light-1 bg-dark-dark-2;
 }
