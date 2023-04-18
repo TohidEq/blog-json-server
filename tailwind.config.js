@@ -20,6 +20,8 @@ module.exports = {
       yellow: "#F0EB8D",
       white: "#ffffff",
       black: "#0d0D0D",
+
+      transparent: "transparent",
     },
   },
   plugins: [],

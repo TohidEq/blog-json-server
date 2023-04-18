@@ -1,6 +1,6 @@
 aside {
   @apply min-h-screen
-  font-extrabold
+  
   w-14
   h-full
   sm:w-48
@@ -23,10 +23,10 @@ aside .side-item {
 }
 
 aside .side-item span {
-  @apply hidden sm:inline-block;
+  @apply hidden sm:inline-block font-bold;
 }
 .side-links svg {
-  @apply sm:w-fit px-4 mx-auto sm:mx-0  sm:pl-[18px] sm:pr-3 py-3 overflow-hidden;
+  @apply sm:w-fit px-4 mx-auto sm:mx-0  sm:pl-[17px] sm:pr-3 py-3 overflow-hidden;
 }
 
 aside .side-profile {

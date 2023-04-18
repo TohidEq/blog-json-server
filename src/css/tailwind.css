@@ -5,3 +5,4 @@
 
 @import "./base/_page.css";
 @import "../components/Sidebar/Sidebar.css";
+@import "../components/pages/SignInUp/SignInUp.css";

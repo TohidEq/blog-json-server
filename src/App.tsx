@@ -6,8 +6,8 @@ import ProtectedRoute from "./components/ProtectedRoutes";
 
 import Layout from "./components/Layout";
 
-import SignUp from "./components/pages/SingInUp/SignUp";
-import SignIn from "./components/pages/SingInUp/SignIn";
+import SignUp from "./components/pages/SignInUp/SignUp";
+import SignIn from "./components/pages/SignInUp/SignIn";
 import NotFound from "./components/pages/NotFound";
 import useTheme from "./hooks/useTheme";
 

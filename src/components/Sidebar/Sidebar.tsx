@@ -56,7 +56,7 @@ const Sidebar = (props: Props) => {
         <div className="side-links ">
           <button className="side-item" onClick={changeMode}>
             <FontAwesomeIcon icon={mode == "dark" ? fasLight : fasDark} />
-            <span>{mode == "dark" ? "light" : "dark"}</span>
+            <span>{mode == "dark" ? "Light" : "Dark"}</span>
           </button>
           <NavLink to={"/about-us"} className="side-item">
             <FontAwesomeIcon icon={fasQues} />

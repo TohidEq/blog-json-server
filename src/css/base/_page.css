@@ -1,9 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
 
-/* body {
-  font-family: "Rubik", sans-serif;
+body {
+  font-family: "Comfortaa", cursive;
   @apply bg-dark-2;
-} */
+}
+body * {
+  @apply select-none;
+}
 
 .App {
   @apply container flex flex-nowrap mx-auto 
@@ -13,20 +16,30 @@
 }
 
 main {
-  @apply max-h-screen min-h-screen overflow-y-scroll w-full;
+  @apply pl-1.5 max-h-screen min-h-screen overflow-y-scroll w-full;
+}
+
+h2 {
+  @apply block w-full font-bold text-2xl;
 }
 
 /* ==== scrollbar design ==== */
 /* Firefox */
+
+main {
+  --secondary: #2a2f4f;
+}
+.dark main {
+  --secondary: #393053;
+}
 main {
   --primary: transparent;
-  --secondary: cornflowerblue;
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) var(--primary);
 }
 /* Chrome, Edge, and Safari */
 main::-webkit-scrollbar {
-  width: 10px;
+  @apply w-1 sm:w-2;
 }
 
 main::-webkit-scrollbar-track {

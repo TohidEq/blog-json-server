@@ -1,0 +1,60 @@
+.sign-in-up {
+  @apply max-w-md
+  mx-auto
+  pt-2
+  bg-yellow;
+}
+.sign-in-up form {
+  @apply mx-auto;
+}
+.sign-in-up .page-title {
+  @apply text-center;
+}
+
+.sign-in-up .input {
+  @apply flex bg-dark-dark-2/50
+    my-5;
+}
+.sign-in-up .input .show-passwrd {
+  @apply w-10 h-9
+    flex items-center;
+}
+.sign-in-up .input .show-passwrd svg {
+  @apply w-7 h-7;
+}
+
+.sign-in-up input {
+  @apply bg-transparent
+    text-xl
+    py-1 px-1.5
+    w-full
+    /*uncomment next line pls  */
+    /* bg-transparent */
+    appearance-none 
+    border-none
+    outline-none;
+}
+
+.sign-in-up .btns {
+  @apply flex justify-between;
+}
+
+/* === -- REMOVE AUTOFILL CHANGES -- === */
+
+input:autofill,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0) inset !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  background-image: none !important;
+  transition: all 9999s ease-in-out 0s;
+}
+input:autofill {
+  filter: none;
+}
+
+/* input:-webkit-autofill {
+  -webkit-text-fill-color: yellow !important;
+} */
