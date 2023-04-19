@@ -1,0 +1,88 @@
+.card {
+  @apply mb-3 ml-4 mr-1 p-0 mx-auto max-w-md;
+}
+
+/* profile */
+.card .profile {
+  @apply flex 
+    relative
+    justify-start 
+    items-center
+
+    sm:h-10
+    ml-[18px]
+    sm:ml-5
+    w-fit;
+}
+.card .profile svg {
+  @apply h-8 w-8
+    sm:h-10 sm:w-10
+    absolute
+    right-full rounded-full;
+}
+.card .profile .profile-name {
+  @apply font-bold 
+    text-[21px]
+    sm:text-2xl
+    relative
+    top-1
+    pl-1
+    h-fit;
+}
+
+/* text */
+.card p.text {
+  @apply text-lg sm:text-[20px] px-2 pb-1 pt-1
+   border-light-dark-2 border-l-2 sm:border-l-4;
+}
+
+/* post informations */
+.card .post-information {
+  @apply flex justify-between 
+    pt-2
+    px-2
+     border-light-dark-2 border-l-2 sm:border-l-4;
+}
+.card .post-information .icons {
+  @apply sm:h-5;
+}
+.card .post-information a {
+  @apply sm:h-5 odd:pr-2 inline;
+}
+.card .post-information .icons svg {
+  @apply sm:h-5 sm:w-5 pr-1;
+}
+.card .post-information .icons span {
+  @apply text-base sm:text-xl sm:h-5;
+}
+.card .post-information .date {
+  @apply text-base sm:text-lg;
+}
+
+/* === --- theme --- === */
+
+.card {
+  @apply mb-3 ml-4 mr-1 p-0 mx-auto max-w-md
+    bg-light-dark-2/20;
+}
+.card .profile svg {
+  @apply bg-white rounded-full;
+}
+.card .text {
+  @apply text-light-dark-2;
+}
+
+.card .post-information .date {
+  @apply text-light-dark-2;
+}
+
+/* dark mode */
+.dark .card .profile-name {
+  @apply text-light-light-1;
+}
+.dark .card .text {
+  @apply text-light-light-1;
+}
+.dark .card .post-information .date {
+  @apply text-light-light-2/80;
+}

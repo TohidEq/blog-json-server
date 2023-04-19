@@ -4,5 +4,6 @@
 @import "tailwindcss/variants";
 
 @import "./base/_page.css";
-@import "../components/Sidebar/Sidebar.css";
-@import "../components/pages/SignInUp/SignInUp.css";
+@import "../components/sidebar/Sidebar.css";
+@import "../components/pages/signInUp/SignInUp.css";
+@import "../components/card/Card.css";

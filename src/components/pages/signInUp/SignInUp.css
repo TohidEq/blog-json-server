@@ -42,8 +42,7 @@
     /* bg-transparent */
     appearance-none 
     border-none
-    outline-none
-    required:border-b-purple 
+    outline-none 
     pointer-events-auto;
 }
 .sign-in-up .names-input {
@@ -60,7 +59,7 @@
   @apply px-3 py-1;
 }
 .sign-in-up .btns a {
-  @apply font-bold;
+  @apply font-bold px-1;
 }
 
 .sign-in-up p.error {
@@ -69,7 +68,7 @@
 
 /* === --- themes --- === */
 .sign-in-up input {
-  @apply bg-light-dark-1/20 focus:bg-light-dark-1/40 placeholder:text-light-dark-2/60;
+  @apply text-light-dark-2 bg-light-dark-1/20 focus:bg-light-dark-1/40 placeholder:text-light-dark-2/60;
 }
 .sign-in-up .input.error {
   -webkit-box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);
@@ -78,7 +77,6 @@
 .sign-in-up .btns .btn {
   @apply bg-light-dark-2 text-light-light-1 hover:bg-light-dark-2/70;
 }
-
 
 .sign-in-up p.error {
   @apply text-light-red;
@@ -90,7 +88,6 @@
 .dark .sign-in-up input {
   @apply text-light-light-1 placeholder:text-light-light-2/50;
 }
-
 
 /* === -- REMOVE AUTOFILL CHANGES -- === */
 

@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/sidebar/Sidebar";
 
 import ProtectedRoute from "./components/ProtectedRoutes";
 
 import Layout from "./components/Layout";
 
-import SignUp from "./components/pages/SignInUp/SignUp";
-import SignIn from "./components/pages/SignInUp/SignIn";
+import SignUp from "./components/pages/signInUp/SignUp";
+import SignIn from "./components/pages/signInUp/SignIn";
 import NotFound from "./components/pages/NotFound";
 import useTheme from "./hooks/useTheme";
 
@@ -24,7 +24,7 @@ function App() {
             <Routes>
               {/* <Route path="/" element={<Home />} /> */}
               <Route
-                path="/"
+                path="/lo"
                 element={
                   <ProtectedRoute>
                     <Layout />
@@ -33,7 +33,7 @@ function App() {
               ></Route>
 
               {/*==== test ======================*/}
-              <Route path="/lo" element={<Layout />} />
+              <Route path="/" element={<Layout />} />
 
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/sign-in" element={<SignIn />} />
