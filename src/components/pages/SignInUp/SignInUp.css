@@ -57,11 +57,15 @@
   @apply font-bold;
 }
 
+.sign-in-up p.error {
+  @apply absolute py-4;
+}
+
 /* === --- themes --- === */
 .sign-in-up input {
   @apply bg-light-dark-1/20 focus:bg-light-dark-1/40 placeholder:text-light-dark-2/60;
 }
-.sign-in-up input.required:invalid {
+.sign-in-up .input.error {
   -webkit-box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);
   box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);
 }
@@ -70,6 +74,10 @@
 }
 .sign-in-up .btns a {
   @apply text-light-dark-2 hover:text-dark-light-1;
+}
+
+.sign-in-up p.error {
+  @apply text-light-red;
 }
 
 /* === -- REMOVE AUTOFILL CHANGES -- === */

@@ -880,6 +880,12 @@ aside .side-item.active{
   font-weight: 700;
 }
 
+.sign-in-up p.error{
+  position: absolute;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 /* === --- themes --- === */
 
 .sign-in-up input{
@@ -898,7 +904,7 @@ aside .side-item.active{
   background-color: rgb(145 127 179 / 0.4);
 }
 
-.sign-in-up input.required:invalid {
+.sign-in-up .input.error {
   box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);
 }
 
@@ -921,6 +927,11 @@ aside .side-item.active{
 .sign-in-up .btns a:hover{
   --tw-text-opacity: 1;
   color: rgb(99 89 133 / var(--tw-text-opacity));
+}
+
+.sign-in-up p.error{
+  --tw-text-opacity: 1;
+  color: rgb(197 61 95 / var(--tw-text-opacity));
 }
 
 /* === -- REMOVE AUTOFILL CHANGES -- === */
