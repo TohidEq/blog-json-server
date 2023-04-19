@@ -10,7 +10,7 @@
   sm:content-center;
 }
 .sign-in-up form {
-  @apply w-full;
+  @apply w-full pt-5;
 }
 .sign-in-up .page-title {
   @apply text-center;
@@ -20,7 +20,7 @@
   @apply flex  
     relative
     w-full
-    my-5;
+    mb-5;
 }
 .sign-in-up .input .show-passwrd {
   @apply w-10 h-10 hover:cursor-pointer
@@ -45,6 +45,12 @@
     outline-none
     required:border-b-purple 
     pointer-events-auto;
+}
+.sign-in-up .names-input {
+  @apply sm:flex sm:flex-nowrap sm:gap-x-2;
+}
+.sign-in-up .names-input .input {
+  @apply sm:w-1/2;
 }
 
 .sign-in-up .btns {
@@ -78,6 +84,16 @@
 
 .sign-in-up p.error {
   @apply text-light-red;
+}
+/* dark */
+.dark .sign-in-up .btn {
+  @apply hover:bg-dark-light-1;
+}
+.dark .sign-in-up input {
+  @apply text-light-light-1 placeholder:text-light-light-2/50;
+}
+.dark .sign-in-up a {
+  @apply text-dark-light-1 hover:text-light-dark-1;
 }
 
 /* === -- REMOVE AUTOFILL CHANGES -- === */

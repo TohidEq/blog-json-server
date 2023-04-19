@@ -804,6 +804,7 @@ aside .side-item.active{
 
 .sign-in-up form{
   width: 100%;
+  padding-top: 1.25rem;
 }
 
 .sign-in-up .page-title{
@@ -812,7 +813,6 @@ aside .side-item.active{
 
 .sign-in-up .input{
   position: relative;
-  margin-top: 1.25rem;
   margin-bottom: 1.25rem;
   display: flex;
   width: 100%;
@@ -860,6 +860,19 @@ aside .side-item.active{
 .sign-in-up input:required{
   --tw-border-opacity: 1;
   border-bottom-color: rgb(143 67 238 / var(--tw-border-opacity));
+}
+
+@media (min-width: 640px){
+  .sign-in-up .names-input{
+    display: flex;
+    flex-wrap: nowrap;
+    -moz-column-gap: 0.5rem;
+         column-gap: 0.5rem;
+  }
+
+  .sign-in-up .names-input .input{
+    width: 50%;
+  }
 }
 
 .sign-in-up .btns{
@@ -932,6 +945,36 @@ aside .side-item.active{
 .sign-in-up p.error{
   --tw-text-opacity: 1;
   color: rgb(197 61 95 / var(--tw-text-opacity));
+}
+
+/* dark */
+
+.dark .sign-in-up .btn:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 89 133 / var(--tw-bg-opacity));
+}
+
+.dark .sign-in-up input{
+  --tw-text-opacity: 1;
+  color: rgb(253 226 243 / var(--tw-text-opacity));
+}
+
+.dark .sign-in-up input::-moz-placeholder{
+  color: rgb(229 190 236 / 0.5);
+}
+
+.dark .sign-in-up input::placeholder{
+  color: rgb(229 190 236 / 0.5);
+}
+
+.dark .sign-in-up a{
+  --tw-text-opacity: 1;
+  color: rgb(99 89 133 / var(--tw-text-opacity));
+}
+
+.dark .sign-in-up a:hover{
+  --tw-text-opacity: 1;
+  color: rgb(145 127 179 / var(--tw-text-opacity));
 }
 
 /* === -- REMOVE AUTOFILL CHANGES -- === */
