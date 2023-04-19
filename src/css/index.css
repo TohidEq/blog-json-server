@@ -895,6 +895,7 @@ aside .side-item.active{
 
 .sign-in-up p.error{
   position: absolute;
+  max-width: 28rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }

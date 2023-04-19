@@ -64,7 +64,7 @@
 }
 
 .sign-in-up p.error {
-  @apply absolute py-4;
+  @apply absolute py-4 max-w-md;
 }
 
 /* === --- themes --- === */

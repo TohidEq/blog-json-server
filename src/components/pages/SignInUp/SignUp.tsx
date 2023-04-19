@@ -64,7 +64,7 @@ const SignUp = (props: Props) => {
 
   return (
     <div className="sign-in-up">
-      <h2 className="page-title">Sign in</h2>
+      <h2 className="page-title">Sign up</h2>
 
       <form action="" autoComplete="off" onSubmit={handleSubmit}>
         <div className="names-input">
@@ -127,6 +127,11 @@ const SignUp = (props: Props) => {
         <p className="error">
           {error.email || error.passwrd || error.firstName || error.lastName
             ? `Please insert correct values.`
+            : ""}
+          <br />
+          <br />
+          {error.passwrd
+            ? `Passwords should be a minimum of 8 characters in length. Longer passwords are more secure and should contain upper and lower case characters, numbers, and special characters`
             : ""}
         </p>
       </form>
