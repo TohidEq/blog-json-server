@@ -1,42 +1,75 @@
 .sign-in-up {
   @apply max-w-md
+  min-h-[330px]
   mx-auto
   pt-2
-  bg-yellow;
+  
+  h-1/2
+  sm:flex
+  sm:flex-wrap
+  sm:content-center;
 }
 .sign-in-up form {
-  @apply mx-auto;
+  @apply w-full;
 }
 .sign-in-up .page-title {
   @apply text-center;
 }
 
 .sign-in-up .input {
-  @apply flex bg-dark-dark-2/50
+  @apply flex  
+    relative
+    w-full
     my-5;
 }
 .sign-in-up .input .show-passwrd {
-  @apply w-10 h-9
-    flex items-center;
+  @apply w-10 h-10 hover:cursor-pointer
+    absolute flex items-center justify-center
+    hover:opacity-70 
+    right-0;
 }
 .sign-in-up .input .show-passwrd svg {
-  @apply w-7 h-7;
+  @apply w-7 h-7
+     pointer-events-auto;
 }
 
 .sign-in-up input {
   @apply bg-transparent
     text-xl
-    py-1 px-1.5
+    py-1.5 px-2
     w-full
     /*uncomment next line pls  */
     /* bg-transparent */
     appearance-none 
     border-none
-    outline-none;
+    outline-none
+    required:border-b-purple 
+    pointer-events-auto;
 }
 
 .sign-in-up .btns {
-  @apply flex justify-between;
+  @apply flex justify-between items-center flex-row-reverse;
+}
+.sign-in-up .btns .btn {
+  @apply px-3 py-1;
+}
+.sign-in-up .btns a {
+  @apply font-bold;
+}
+
+/* === --- themes --- === */
+.sign-in-up input {
+  @apply bg-light-dark-1/20 focus:bg-light-dark-1/40 placeholder:text-light-dark-2/60;
+}
+.sign-in-up input.required:invalid {
+  -webkit-box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);
+  box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);
+}
+.sign-in-up .btns .btn {
+  @apply bg-light-dark-2 text-light-light-1 hover:bg-light-dark-2/70;
+}
+.sign-in-up .btns a {
+  @apply text-light-dark-2 hover:text-dark-light-1;
 }
 
 /* === -- REMOVE AUTOFILL CHANGES -- === */
@@ -52,7 +85,7 @@ input:-webkit-autofill:active {
   transition: all 9999s ease-in-out 0s;
 }
 input:autofill {
-  filter: none;
+  filter: none !important;
 }
 
 /* input:-webkit-autofill {

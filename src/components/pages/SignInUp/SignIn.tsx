@@ -15,6 +15,7 @@ const SignIn = (props: Props) => {
   const [email, setEmail] = useState<string>("");
   const [passwrd, setPasswrd] = useState<string>("");
 
+  const [rqrd, setRqrd] = useState<boolean>(false);
   const [showPasswrd, setShowPasswrd] = useState<boolean>(false);
 
   const showPasswrdHandler = () => {
@@ -23,6 +24,11 @@ const SignIn = (props: Props) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setRqrd(true);
+    // email, passwrd bla bla bla
+  };
+  const handleSubmit2 = (e: React.MouseEventHandler<HTMLButtonElement>) => {
+    setRqrd(true);
     // email, passwrd bla bla bla
   };
 
@@ -34,6 +40,7 @@ const SignIn = (props: Props) => {
         <div className="input">
           <input
             onChange={(e) => setEmail(e.target.value)}
+            className={rqrd ? "required" : ""}
             value={email}
             type="text"
             placeholder="Email"
@@ -43,10 +50,10 @@ const SignIn = (props: Props) => {
         <div className="input">
           <input
             onChange={(e) => setPasswrd(e.target.value)}
+            className={rqrd ? "required" : ""}
             value={passwrd}
             type={showPasswrd ? "text" : "password"}
             placeholder="Password"
-            autoComplete="new-password"
             required
           />
           <div className="show-passwrd" onClick={showPasswrdHandler}>
@@ -54,10 +61,10 @@ const SignIn = (props: Props) => {
           </div>
         </div>
         <div className="btns">
-          <Link to="/sign-up">Create account </Link>
-          <button className="btn" type="submit">
+          <button className="btn" type="submit" onClick={handleSubmit2}>
             Sign in
           </button>
+          <Link to="/sign-up">Create account </Link>
         </div>
       </form>
     </div>
