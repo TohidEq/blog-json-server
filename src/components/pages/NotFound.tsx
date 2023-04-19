@@ -1,23 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
 
-type Props = {}
+type Props = {};
 
 export default function NotFound({}: Props) {
-
   return (
-    <>
-    <div className="App ">
-            <h1>404 - NotFound</h1>
+    <div className="pt-9">
+      <h2 className="text-center">404 - NotFound</h2>
 
-
-            <form className='form'>
-                <Link to="/">
-                    <button >Bach to Home</button>
-                </Link>
-              
-            </form>
-          </div>
-    </>
-  )
+      <Link to="/" className="block text-center pt-2">
+        Bach to Home
+      </Link>
+    </div>
+  );
 }

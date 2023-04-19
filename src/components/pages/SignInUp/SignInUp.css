@@ -78,9 +78,7 @@
 .sign-in-up .btns .btn {
   @apply bg-light-dark-2 text-light-light-1 hover:bg-light-dark-2/70;
 }
-.sign-in-up .btns a {
-  @apply text-light-dark-2 hover:text-dark-light-1;
-}
+
 
 .sign-in-up p.error {
   @apply text-light-red;
@@ -92,9 +90,7 @@
 .dark .sign-in-up input {
   @apply text-light-light-1 placeholder:text-light-light-2/50;
 }
-.dark .sign-in-up a {
-  @apply text-dark-light-1 hover:text-light-dark-1;
-}
+
 
 /* === -- REMOVE AUTOFILL CHANGES -- === */
 

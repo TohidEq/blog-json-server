@@ -9,12 +9,19 @@ body * {
 }
 
 .App {
-  @apply container flex flex-nowrap mx-auto 
+  @apply container flex flex-nowrap mx-auto
     /* rounded-md just for test...  remove this later pls */
     /* sm:rounded-md */
     pr-1;
 }
-
+H1,
+H2,
+H3,
+H4,
+H5,
+H6 {
+  @apply w-full block;
+}
 main {
   @apply pl-1.5 max-h-screen min-h-screen overflow-y-scroll w-full;
 }
@@ -57,8 +64,15 @@ main::-webkit-scrollbar-thumb {
 .base {
   @apply bg-light-light-1;
 }
+main a {
+  @apply text-light-dark-2 hover:text-dark-light-1;
+}
 
 /* dark mode */
 .dark.base {
   @apply bg-dark-dark-2 text-light-light-1;
+}
+
+.dark main a {
+  @apply text-light-dark-1 hover:text-dark-light-1;
 }
