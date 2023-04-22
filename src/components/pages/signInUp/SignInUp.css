@@ -1,13 +1,14 @@
 .sign-in-up {
   @apply max-w-md
-  min-h-[330px]
   mx-auto
   pt-2
   
-  h-1/2
   sm:flex
   sm:flex-wrap
   sm:content-center;
+}
+.sign-in-up h2 {
+  @apply pt-9 sm:pt-20;
 }
 .sign-in-up form {
   @apply w-full pt-5;

@@ -10,6 +10,7 @@ import SignUp from "./components/pages/signInUp/SignUp";
 import SignIn from "./components/pages/signInUp/SignIn";
 import NotFound from "./components/pages/NotFound";
 import useTheme from "./hooks/useTheme";
+import Search from "./components/pages/search/Search";
 
 function App() {
   const { mode, changeMode } = useTheme();
@@ -37,6 +38,7 @@ function App() {
 
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/search" element={<Search />} />
 
               <Route path="/*" element={<NotFound />} />
             </Routes>
