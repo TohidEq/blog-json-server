@@ -7,7 +7,9 @@ body {
 body * {
   @apply select-none;
 }
-
+div {
+  @apply transition-colors duration-150;
+}
 .App {
   @apply container flex flex-nowrap mx-auto
     /* rounded-md just for test...  remove this later pls */

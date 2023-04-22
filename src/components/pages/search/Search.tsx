@@ -42,7 +42,7 @@ const Search = (props: Props) => {
         </form>
       </div>
 
-      <div className="search-result">
+      <div className="search-result w-fit mx-auto">
         <Card
           name="Tohid"
           text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
