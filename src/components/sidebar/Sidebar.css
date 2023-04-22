@@ -19,27 +19,32 @@ aside .side-links {
   @apply last:absolute last:bottom-0 flex flex-wrap;
 }
 aside .side-item {
-  @apply snap-center transition-colors duration-150 flex items-center  w-full text-lg;
+  @apply snap-center transition-colors duration-150 flex items-center  w-full text-lg h-11;
 }
 
 aside .side-item span {
   @apply hidden sm:inline-block font-bold;
 }
-.side-links svg {
-  @apply sm:w-fit px-4 mx-auto sm:mx-0  sm:pl-[17px] sm:pr-3 py-3 overflow-hidden;
+
+.side-links .svg {
+  @apply w-8 h-8 mx-auto sm:mx-[13px] p-0.5;
 }
 
 aside .side-profile {
-  @apply text-2xl;
+  @apply text-2xl h-12;
 }
 aside .side-profile span {
   @apply pl-1;
 }
-aside .side-profile svg {
-  @apply w-10 h-10 p-2 overflow-hidden;
+aside .side-profile .svg {
+  @apply w-10 h-10 mx-2 overflow-hidden;
+}
+aside .side-item svg {
+  @apply w-full h-full;
 }
 
 /* theme colors */
+
 aside {
   @apply bg-light-dark-2 text-light-light-1;
 }

@@ -1,13 +1,6 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faUserCircle as fasUser,
-  faHome as fasHome,
-  faHeart as fasHeart,
-  faComment as fasComment,
-} from "@fortawesome/free-solid-svg-icons";
-import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
+import { FaUser, FaComment, FaHeart } from "react-icons/fa";
 
 type Props = {
   name: string;
@@ -21,7 +14,7 @@ const Card = (props: Props) => {
   return (
     <div className="card">
       <Link to={"/some-user-profile"} className="profile">
-        <FontAwesomeIcon icon={fasUser} />
+        <FaUser className="border-[1px] sm:border-2" />
         <span className="profile-name">{props.name}</span>
       </Link>
       <p className="text">{props.text}</p>
@@ -29,12 +22,12 @@ const Card = (props: Props) => {
         <span className="date">{props.date}</span>
         <div className="icons">
           <Link to={"/"}>
-            <FontAwesomeIcon icon={fasComment} />
             <span>{props.likes}</span>
+            <FaComment />
           </Link>
           <Link to={"/"}>
-            <FontAwesomeIcon icon={fasHeart} />
             <span>{props.comments}</span>
+            <FaHeart />
           </Link>
         </div>
       </div>

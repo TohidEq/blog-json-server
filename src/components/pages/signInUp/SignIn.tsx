@@ -1,12 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEye as fasEye,
-  faEyeSlash as fasEye2,
-} from "@fortawesome/free-solid-svg-icons";
-import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { validEmail, validPassword } from "../../../utils/regex";
 
@@ -75,7 +70,7 @@ const SignIn = (props: Props) => {
             placeholder="Password"
           />
           <div className="show-passwrd" onClick={showPasswrdHandler}>
-            <FontAwesomeIcon icon={showPasswrd ? fasEye : fasEye2} />
+            {showPasswrd ? <FaEye /> : <FaEyeSlash />}
           </div>
         </div>
         <div className="btns">

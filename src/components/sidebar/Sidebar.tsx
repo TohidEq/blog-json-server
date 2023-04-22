@@ -1,14 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
-  faUserCircle as fasUser,
-  faHome as fasHome,
-  faHeart as fasHeart,
-  faSearch as fasSearch,
-  faQuestion as fasQues,
-  faMoon as fasDark,
-  faLightbulb as fasLight,
-} from "@fortawesome/free-solid-svg-icons";
-import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
+  FaUserCircle,
+  FaHome,
+  FaHeart,
+  FaSearch,
+  FaQuestion,
+  FaMoon,
+  FaSun,
+} from "react-icons/fa";
 import React from "react";
 
 import { Link, NavLink } from "react-router-dom";
@@ -31,35 +31,45 @@ const Sidebar = (props: Props) => {
     <aside>
       {/* Profile of SignIn/Up --> */}
       <NavLink to={"/profile"} className="side-item side-profile">
-        <FontAwesomeIcon icon={fasUser} />
+        <div className="svg rounded-full overflow-hidden">
+          <FaUserCircle />
+        </div>
         <span>Profile</span>
       </NavLink>
       {/* <-- end profile or SignIn/Up */}
       <div className="side-links-container">
         <div className="side-links">
           <NavLink to={"/"} className="side-item" end>
-            <FontAwesomeIcon icon={fasHome} />
+            <div className="svg">
+              <FaHome />
+            </div>
             <span>Home</span>
           </NavLink>
 
           <NavLink to={"/search"} className="side-item">
-            <FontAwesomeIcon icon={fasSearch} />
+            <div className="svg">
+              <FaSearch />
+            </div>
             <span>Search</span>
           </NavLink>
 
           <NavLink to={"/likes"} className="side-item">
-            <FontAwesomeIcon icon={fasHeart} />
+            <div className="svg">
+              <FaHeart />
+            </div>
             <span>Likes</span>
           </NavLink>
         </div>
 
         <div className="side-links ">
           <button className="side-item" onClick={changeMode}>
-            <FontAwesomeIcon icon={mode == "dark" ? fasLight : fasDark} />
+            <div className="svg">{mode == "dark" ? <FaSun /> : <FaMoon />}</div>
             <span>{mode == "dark" ? "Light" : "Dark"}</span>
           </button>
           <NavLink to={"/about-us"} className="side-item">
-            <FontAwesomeIcon icon={fasQues} />
+            <div className="svg">
+              <FaQuestion />
+            </div>
             <span>About Us</span>
           </NavLink>
         </div>
