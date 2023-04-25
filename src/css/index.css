@@ -523,12 +523,21 @@ video {
   margin-right: auto;
 }
 
+.my-2{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .block{
   display: block;
 }
 
 .flex{
   display: flex;
+}
+
+.grid{
+  display: grid;
 }
 
 .h-8{
@@ -543,17 +552,21 @@ video {
   width: 2rem;
 }
 
-.w-full{
-  width: 100%;
-}
-
 .w-fit{
   width: -moz-fit-content;
   width: fit-content;
 }
 
+.w-full{
+  width: 100%;
+}
+
 .max-w-md{
   max-width: 28rem;
+}
+
+.grid-cols-1{
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
 .justify-center{
@@ -601,6 +614,11 @@ video {
 
 .text-center{
   text-align: center;
+}
+
+.text-xl{
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 @media (min-width: 640px){
@@ -767,7 +785,7 @@ main::-webkit-scrollbar-thumb {
 
 main a{
   --tw-text-opacity: 1;
-  color: rgb(42 47 79 / var(--tw-text-opacity));
+  color: rgb(68 60 104 / var(--tw-text-opacity));
 }
 
 main a:hover{
@@ -1048,6 +1066,12 @@ aside .side-item.active{
   font-weight: 700;
 }
 
+.sign-in-up p.nhost-msg{
+  max-width: 28rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .sign-in-up p.error{
   position: absolute;
   max-width: 28rem;
@@ -1073,6 +1097,10 @@ aside .side-item.active{
 
 .sign-in-up input:focus{
   background-color: rgb(145 127 179 / 0.4);
+}
+
+.sign-in-up input:disabled{
+  --tw-bg-opacity: 0.75;
 }
 
 .sign-in-up .input.error {

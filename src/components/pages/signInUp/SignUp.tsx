@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
 
+import { useSignUpEmailPassword } from "@nhost/react";
+
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { validEmail, validPassword, validName } from "../../../utils/regex";
 
 type Props = {};
@@ -25,6 +27,15 @@ const SignUp = (props: Props) => {
     firstName: false,
     lastName: false,
   });
+
+  const {
+    signUpEmailPassword,
+    isLoading,
+    isSuccess,
+    needsEmailVerification,
+    isError,
+    error: nhostError,
+  } = useSignUpEmailPassword();
   const [showPasswrd, setShowPasswrd] = useState<boolean>(false);
 
   const showPasswrdHandler = () => {
@@ -34,10 +45,24 @@ const SignUp = (props: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (handleCheckSubmit()) {
+      signUpEmailPassword(email, passwrd, {
+        displayName: `${fName} ${lName}`.trim(),
+        metadata: {
+          fName,
+          lName,
+        },
+      });
     } else {
     }
+
     // email, passwrd bla bla bla
   };
+  if (isSuccess) {
+    return <Navigate to="/" replace={true} />;
+  }
+
+  const disableForm = isLoading || needsEmailVerification;
+
   const handleCheckSubmit = (): boolean => {
     // check email by regex
     error.email = !validEmail.test(email);
@@ -53,83 +78,114 @@ const SignUp = (props: Props) => {
     console.log("=======");
     console.log("email:", error.email);
     console.log("pass:", error.passwrd);
-
-    return false;
+    return !(error.email || error.passwrd || error.firstName || error.lastName);
   };
 
   return (
     <div className="sign-in-up">
       <h2 className="page-title">Sign up</h2>
 
-      <form action="" autoComplete="off" onSubmit={handleSubmit}>
-        <div className="names-input">
-          <div
-            className={
-              error.firstName ? "error input names-input" : "input names-input"
-            }
-          >
-            <input
-              className=""
-              autoComplete="off"
-              onChange={(e) => setFName(e.target.value)}
-              value={fName}
-              id="firstName"
-              type="text"
-              placeholder="First name"
-            />
-          </div>
-          <div className={error.lastName ? "error input" : "input"}>
-            <input
-              autoComplete="off"
-              onChange={(e) => setLName(e.target.value)}
-              value={lName}
-              id="lastName"
-              type="text"
-              placeholder="Last name"
-            />
-          </div>
-        </div>
-
-        <div className={error.email ? "error input" : "input"}>
-          <input
-            autoComplete="off"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-            id="email"
-            type="email"
-            placeholder="Email"
-          />
-        </div>
-        <div className={error.passwrd ? "error input" : "input"}>
-          <input
-            autoComplete="off"
-            onChange={(e) => setPasswrd(e.target.value)}
-            id="passwrd"
-            value={passwrd}
-            type={showPasswrd ? "text" : "password"}
-            placeholder="Password"
-          />
-          <div className="show-passwrd" onClick={showPasswrdHandler}>
-            {showPasswrd ? <FaEye /> : <FaEyeSlash />}
-          </div>
-        </div>
-        <div className="btns">
-          <button className="btn" type="submit">
+      {needsEmailVerification ? (
+        <p className="nhost-msg grid grid-cols-1">
+          <span>
+            Please check your mailbox and follow the verification link to verify
+            your email.
+          </span>
+          <Link to="/sign-in" className="text-xl my-2 text-center">
             Sign in
-          </button>
-          <Link to="/sign-in">Have account? Sign in</Link>
-        </div>
-        <p className="error">
-          {error.email || error.passwrd || error.firstName || error.lastName
-            ? `Please insert correct values.`
-            : ""}
-          <br />
-          <br />
-          {error.passwrd
-            ? `Passwords should be a minimum of 8 characters in length. Longer passwords are more secure and should contain upper and lower case characters, numbers, and special characters`
-            : ""}
+          </Link>
         </p>
-      </form>
+      ) : (
+        <form action="" autoComplete="off" onSubmit={handleSubmit}>
+          <div className="names-input">
+            <div
+              className={
+                error.firstName
+                  ? "error input names-input"
+                  : "input names-input"
+              }
+            >
+              <input
+                className=""
+                autoComplete="off"
+                onChange={(e) => setFName(e.target.value)}
+                value={fName}
+                id="firstName"
+                type="text"
+                placeholder="First name"
+                disabled={disableForm}
+              />
+            </div>
+            <div className={error.lastName ? "error input" : "input"}>
+              <input
+                autoComplete="off"
+                onChange={(e) => setLName(e.target.value)}
+                value={lName}
+                id="lastName"
+                type="text"
+                placeholder="Last name"
+                disabled={disableForm}
+              />
+            </div>
+          </div>
+
+          <div className={error.email ? "error input" : "input"}>
+            <input
+              autoComplete="off"
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
+              id="email"
+              type="email"
+              placeholder="Email"
+              disabled={disableForm}
+            />
+          </div>
+          <div className={error.passwrd ? "error input" : "input"}>
+            <input
+              autoComplete="off"
+              onChange={(e) => setPasswrd(e.target.value)}
+              id="passwrd"
+              value={passwrd}
+              type={showPasswrd ? "text" : "password"}
+              placeholder="Password"
+              disabled={disableForm}
+            />
+            <div className="show-passwrd" onClick={showPasswrdHandler}>
+              {showPasswrd ? <FaEye /> : <FaEyeSlash />}
+            </div>
+          </div>
+          <div className="btns">
+            <button className="btn" type="submit" disabled={disableForm}>
+              {isLoading ? "Loading..." : "Create account"}
+            </button>
+            <Link to="/sign-in">Have account? Sign in</Link>
+          </div>
+          <p className="error">
+            {(error.email ||
+              error.passwrd ||
+              error.firstName ||
+              error.lastName) && (
+              <>
+                Please insert correct values.
+                <br />
+                <br />
+              </>
+            )}
+
+            {error.passwrd && (
+              <>
+                Passwords should be a minimum of 8 characters in length. Longer
+                passwords are more secure and should contain upper and lower
+                case characters, numbers, and special characters
+                <br />
+                <br />
+              </>
+            )}
+
+            {isError && <>{nhostError?.message}</>}
+          </p>
+        </form>
+      )}
     </div>
   );
 };

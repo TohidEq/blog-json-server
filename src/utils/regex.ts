@@ -3,7 +3,7 @@ export const validEmail = new RegExp(
 );
 
 export const validPassword = new RegExp(
-  "^(?=.*d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"
+  `^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$`
 );
 
 export const validName = new RegExp("^[a-zA-z]{2,20}$");

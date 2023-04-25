@@ -62,14 +62,19 @@
 .sign-in-up .btns a {
   @apply font-bold px-1;
 }
-
+.sign-in-up p.nhost-msg {
+  @apply py-4 max-w-md;
+}
 .sign-in-up p.error {
   @apply absolute py-4 max-w-md;
 }
 
 /* === --- themes --- === */
 .sign-in-up input {
-  @apply text-light-dark-2 bg-light-dark-1/20 focus:bg-light-dark-1/40 placeholder:text-light-dark-2/60;
+  @apply text-light-dark-2 bg-light-dark-1/20
+    focus:bg-light-dark-1/40 
+    placeholder:text-light-dark-2/60
+    disabled:bg-opacity-75;
 }
 .sign-in-up .input.error {
   -webkit-box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);

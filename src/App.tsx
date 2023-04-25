@@ -26,7 +26,7 @@ function App() {
             <Routes>
               {/* <Route path="/" element={<Home />} /> */}
               <Route
-                path="/lo"
+                path="/"
                 element={
                   <ProtectedRoute>
                     <Layout />
@@ -35,7 +35,7 @@ function App() {
               ></Route>
 
               {/*==== test ======================*/}
-              <Route path="/" element={<Layout />} />
+              <Route path="/noauthlayout" element={<Layout />} />
 
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/sign-in" element={<SignIn />} />

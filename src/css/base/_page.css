@@ -70,7 +70,7 @@ main::-webkit-scrollbar-thumb {
   @apply bg-light-light-1;
 }
 main a {
-  @apply text-light-dark-2 hover:text-dark-light-1;
+  @apply text-dark-light-2 hover:text-dark-light-1;
 }
 
 /* dark mode */
