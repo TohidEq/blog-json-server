@@ -35,6 +35,32 @@ h2 {
   @apply block w-full font-bold text-2xl;
 }
 
+/* create blog button (in home page) */
+.Home {
+  @apply relative;
+}
+.Home .float-btn {
+  @apply w-10 h-10
+   sm:w-12  sm:h-12 
+
+    top-[100vh]
+    -translate-y-12 
+    -translate-x-10 
+
+    sm:-translate-y-16
+    lg:-translate-y-20
+
+    sm:-translate-x-16 
+    md:-translate-x-20   
+    lg:-translate-x-32   
+    xl:-translate-x-40  
+    p-0.5
+    rounded-full fixed z-50;
+}
+.Home .float-btn svg {
+  @apply w-full h-full;
+}
+
 /* ==== scrollbar design ==== */
 /* Firefox */
 
@@ -72,10 +98,16 @@ main::-webkit-scrollbar-thumb {
 main a {
   @apply text-dark-light-2 hover:text-dark-light-1;
 }
+.float-btn {
+  @apply text-opacity-80 bg-opacity-80 bg-dark-dark-2 hover:bg-opacity-60 text-light-light-1 hover:text-light-light-2;
+}
 
 /* dark mode */
 .dark.base {
   @apply bg-dark-dark-2 text-light-light-1;
+}
+.dark .float-btn {
+  @apply bg-opacity-60 bg-light-light-1 hover:bg-opacity-50 text-dark-dark-1 hover:text-dark-light-1;
 }
 
 .dark main a {
