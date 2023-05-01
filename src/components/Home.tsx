@@ -2,13 +2,20 @@ import React from "react";
 import Card from "./card/Card";
 import { FaEye, FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useAuthenticationStatus } from "@nhost/react";
 
 type Props = {};
 
 export default function Home({}: Props) {
+  const { isAuthenticated, isLoading } = useAuthenticationStatus();
+
   return (
     <div className="Home">
-      <div className="float-right">
+      <div
+        className={`float-right ${
+          isLoading || !isAuthenticated ? "invisible" : ""
+        }`}
+      >
         <NavLink to={"/create"} className={"float-btn"}>
           <FaPlus />
         </NavLink>

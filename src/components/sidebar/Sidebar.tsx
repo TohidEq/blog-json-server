@@ -9,7 +9,9 @@ import {
   FaMoon,
   FaSun,
   FaPlus,
+  FaSignInAlt,
 } from "react-icons/fa";
+
 import React from "react";
 
 import { Link, NavLink } from "react-router-dom";
@@ -41,7 +43,7 @@ const Sidebar = (props: Props) => {
         className="side-item side-profile"
       >
         <div className="svg rounded-full overflow-hidden">
-          <FaUserCircle />
+          {isLoading || !isAuthenticated ? <FaSignInAlt /> : <FaUserCircle />}
         </div>
         <span>{isLoading || !isAuthenticated ? "Sign in" : "Profile"}</span>
       </NavLink>

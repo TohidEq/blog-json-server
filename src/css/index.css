@@ -518,6 +518,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.invisible{
+  visibility: hidden;
+}
+
 .relative{
   position: relative;
 }

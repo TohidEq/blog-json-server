@@ -38,9 +38,6 @@ function App() {
               ></Route>
               <Route path="/home" element={<Home />}></Route>
 
-              {/*==== test ======================*/}
-              <Route path="/noauthlayout" element={<Layout />} />
-
               <Route path="/sign-up" element={<SignUp />} />
               <Route path="/sign-in" element={<SignIn />} />
               <Route path="/search" element={<Search />} />
@@ -48,7 +45,15 @@ function App() {
               <Route path="/about-us" element={<AboutUs />} />
 
               <Route path="/profile" element={<Profile />} />
-              <Route path="/create" element={<Create />} />
+
+              <Route
+                path="/create"
+                element={
+                  <ProtectedRoute>
+                    <Create />
+                  </ProtectedRoute>
+                }
+              />
 
               <Route path="/*" element={<NotFound />} />
             </Routes>
