@@ -1,20 +1,16 @@
 import { useAuthenticationStatus } from "@nhost/react";
-import { Component, ComponentElement } from "react";
+import { Component, HtmlHTMLAttributes } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
-const ProtectedRoute = ({ children }: any) => {
+const ProtectedComponent = ({ children }: any) => {
   const { isAuthenticated, isLoading } = useAuthenticationStatus();
   const location = useLocation();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
   if (!isAuthenticated) {
-    return <Navigate to="/sign-in" state={{ from: location }} replace />;
+    return null;
   }
 
   return children;
 };
 
-export default ProtectedRoute;
+export default ProtectedComponent;

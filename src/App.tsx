@@ -12,6 +12,9 @@ import NotFound from "./components/pages/NotFound";
 import useTheme from "./hooks/useTheme";
 import Search from "./components/pages/search/Search";
 import AboutUs from "./components/pages/AboutUs";
+import Profile from "./components/pages/profile/Profile";
+import Create from "./components/pages/create/Create";
+import Home from "./components/Home";
 
 function App() {
   const { mode, changeMode } = useTheme();
@@ -33,6 +36,7 @@ function App() {
                   </ProtectedRoute>
                 }
               ></Route>
+              <Route path="/home" element={<Home />}></Route>
 
               {/*==== test ======================*/}
               <Route path="/noauthlayout" element={<Layout />} />
@@ -42,6 +46,9 @@ function App() {
               <Route path="/search" element={<Search />} />
 
               <Route path="/about-us" element={<AboutUs />} />
+
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/create" element={<Create />} />
 
               <Route path="/*" element={<NotFound />} />
             </Routes>
