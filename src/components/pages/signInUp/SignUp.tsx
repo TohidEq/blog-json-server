@@ -4,7 +4,13 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 import { Link, Navigate } from "react-router-dom";
-import { validEmail, validPassword, validName } from "../../../utils/regex";
+import {
+  validEmail,
+  validPassword,
+  validName,
+  validUserName,
+} from "../../../utils/regex";
+import axios from "../../../api/axios";
 
 type Props = {};
 
@@ -12,16 +18,19 @@ const SignUp = (props: Props) => {
   const fName = useRef<HTMLInputElement>(null);
   const lName = useRef<HTMLInputElement>(null);
   const email = useRef<HTMLInputElement>(null);
+  const uName = useRef<HTMLInputElement>(null);
   const passwrd = useRef<HTMLInputElement>(null);
 
   const [error, setError] = useState<{
     email: boolean;
     passwrd: boolean;
+    uName: boolean;
     firstName: boolean;
     lastName: boolean;
   }>({
     email: false,
     passwrd: false,
+    uName: false,
     firstName: false,
     lastName: false,
   });
@@ -36,6 +45,23 @@ const SignUp = (props: Props) => {
     e.preventDefault();
     // email, passwrd bla bla bla
     if (handleCheckSubmit()) {
+      const data = {
+        username: uName.current!.value,
+        fname: fName.current!.value,
+        lname: lName.current!.value,
+        email: email.current!.value,
+        password: passwrd.current!.value,
+      };
+      axios
+        .post("/users", {
+          ...data,
+        })
+        .then((response) => {
+          console.log("Success :D -> ", response);
+        })
+        .catch((error) => {
+          console.log("error :(  -> ", error);
+        });
       console.log("pass");
     } else {
       alert("error");
@@ -45,6 +71,8 @@ const SignUp = (props: Props) => {
   const handleCheckSubmit = (): boolean => {
     // check email by regex
     error.email = !validEmail.test(email.current!.value);
+    //check last name by regex
+    error.uName = !validUserName.test(uName.current!.value);
     // check password by regex
     error.passwrd = !validPassword.test(passwrd.current!.value);
     //check first name by regex
@@ -57,7 +85,13 @@ const SignUp = (props: Props) => {
     console.log("=======");
     console.log("email:", error.email);
     console.log("pass:", error.passwrd);
-    return !(error.email || error.passwrd || error.firstName || error.lastName);
+    return !(
+      error.uName ||
+      error.email ||
+      error.passwrd ||
+      error.firstName ||
+      error.lastName
+    );
   };
 
   return (
@@ -91,6 +125,15 @@ const SignUp = (props: Props) => {
           </div>
         </div>
 
+        <div className={error.uName ? "error input" : "input"}>
+          <input
+            autoComplete="off"
+            ref={uName}
+            id="uName"
+            type="text"
+            placeholder="Username"
+          />
+        </div>
         <div className={error.email ? "error input" : "input"}>
           <input
             autoComplete="off"

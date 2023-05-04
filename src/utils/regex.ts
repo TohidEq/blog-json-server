@@ -7,3 +7,7 @@ export const validPassword = new RegExp(
 );
 
 export const validName = new RegExp("^[a-zA-z]{2,20}$");
+
+export const validUserName = new RegExp(
+  "^(?=[a-zA-Z0-9._]{4,20}$)(?!.*[_.]{2})[^_.].*[^_.]$"
+);

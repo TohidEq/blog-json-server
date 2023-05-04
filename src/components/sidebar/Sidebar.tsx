@@ -16,9 +16,7 @@ import { Link, NavLink } from "react-router-dom";
 import useTheme from "../../hooks/useTheme";
 import ProtectedRoute from "../ProtectedRoutes";
 import ProtectedComponent from "../ProtectedComponent";
-
-
-
+import useAuth from "../../hooks/useAuth";
 
 type Props = {
   mode: string;
@@ -28,10 +26,8 @@ type Props = {
 const Sidebar = (props: Props) => {
   const { changeMode, mode } = props;
 
-  const { isAuthenticated, isLoading } = {
-    isAuthenticated: true,
-    isLoading: false,
-  };
+  const { isAuthenticated, isLoading } = useAuth();
+  console.log("sidebar, isAuth and isLoading: ", isAuthenticated, isLoading);
 
   return (
     <aside>

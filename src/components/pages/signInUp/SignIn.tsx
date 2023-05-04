@@ -2,20 +2,21 @@ import React, { useRef } from "react";
 import { useState } from "react";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, Navigate } from "react-router-dom";
-import { validEmail, validPassword } from "../../../utils/regex";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { validEmail, validPassword, validUserName } from "../../../utils/regex";
+import axios from "../../../api/axios";
 
 type Props = {};
 
 const SignIn = (props: Props) => {
-  const email = useRef<HTMLInputElement>(null);
+  const uName = useRef<HTMLInputElement>(null);
   const passwrd = useRef<HTMLInputElement>(null);
 
   const [error, setError] = useState<{
-    email: boolean;
+    uName: boolean;
     passwrd: boolean;
   }>({
-    email: false,
+    uName: false,
     passwrd: false,
   });
   const [showPasswrd, setShowPasswrd] = useState<boolean>(false);
@@ -23,11 +24,24 @@ const SignIn = (props: Props) => {
   const showPasswrdHandler = () => {
     setShowPasswrd(!showPasswrd);
   };
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (handleCheckSubmit()) {
-      
+      axios.get(`users?username=${uName.current!.value}`).then((res: any) => {
+        if (!res.data.length) {
+          console.log("invalid information :D (no username like this)");
+        } else if (res.data[0].password !== passwrd.current!.value) {
+          console.log("invalid information :D (wrong password)");
+        } else {
+          // log in
+          console.log("Success!");
+          sessionStorage.setItem("username", uName.current!.value);
+
+          navigate("/");
+        }
+      });
       console.log("pass");
     } else {
       alert("error");
@@ -36,18 +50,18 @@ const SignIn = (props: Props) => {
   };
 
   const handleCheckSubmit = (): boolean => {
-    // check email by regex
-    error.email = !validEmail.test(email.current!.value);
+    // check username by regex
+    error.uName = !validUserName.test(uName.current!.value);
     // check password by regex
     error.passwrd = !validPassword.test(passwrd.current!.value);
 
     setError({ ...error });
 
     console.log("=======");
-    console.log("email:", error.email);
+    console.log("email:", error.uName);
     console.log("pass:", error.passwrd);
 
-    return !(error.email || error.passwrd);
+    return !(error.uName || error.passwrd);
   };
 
   return (
@@ -55,13 +69,13 @@ const SignIn = (props: Props) => {
       <h2 className="page-title">Sign in</h2>
 
       <form action="" onSubmit={handleSubmit}>
-        <div className={error.email ? "error input" : "input"}>
+        <div className={error.uName ? "error input" : "input"}>
           <input
             autoComplete="off"
-            ref={email}
-            id="email"
+            ref={uName}
+            id="uName"
             type="text"
-            placeholder="Email"
+            placeholder="Usernme"
           />
         </div>
         <div className={error.passwrd ? "error input" : "input"}>
@@ -83,7 +97,7 @@ const SignIn = (props: Props) => {
           <Link to="/sign-up">Create account </Link>
         </div>
         <p className="error">
-          {(error.email || error.passwrd) && <>Please insert correct values.</>}
+          {(error.uName || error.passwrd) && <>Please insert valid values.</>}
         </p>
       </form>
     </div>

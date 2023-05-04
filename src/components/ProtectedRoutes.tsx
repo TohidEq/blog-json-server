@@ -1,13 +1,15 @@
 import { Component, ComponentElement } from "react";
 import { Navigate, useLocation } from "react-router-dom";
-
+import useAuth from "../hooks/useAuth";
 
 const ProtectedRoute = ({ children }: any) => {
-  const { isAuthenticated, isLoading } = {isAuthenticated:true,isLoading:false}
+  var { isAuthenticated, isLoading } = useAuth();
+
   const location = useLocation();
+  console.log("protected routes *");
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>...</div>;
   }
 
   if (!isAuthenticated) {

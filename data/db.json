@@ -2,24 +2,37 @@
   "users": [
     {
       "id": "1",
-      "username": "tohid",
+      "username": "tohideq",
+      "fname": "tohid",
+      "lname": "eghdami",
       "email": "tohideq@gmail.com",
       "password": "A@t123456"
     },
     {
       "id": "2",
-      "username": "ali",
+      "username": "aliad",
+      "fname": "ali",
+      "lname": "adadi",
       "email": "ali@gmail.com",
       "password": "A@a123456"
     },
     {
       "id": "3",
-      "username": "mmd",
+      "username": "mmddf",
+      "fname": "mmd",
+      "lname": "daftari",
       "email": "mmd@gmail.com",
       "password": "A@m123456"
+    },
+    {
+      "username": "tohidEq2",
+      "fname": "tohidtwo",
+      "lname": "eqtwo",
+      "email": "tohideq_two@gmail.com",
+      "password": "asdASD@123",
+      "id": "QIWkqwN"
     }
   ],
-
   "blogs": [
     {
       "id": "1",
@@ -40,14 +53,28 @@
       "created_at": "1682972886503"
     }
   ],
-
   "likes": [
-    { "id": "1", "blog_id": "1", "user_id": "2" },
-    { "id": "2", "blog_id": "3", "user_id": "1" },
-    { "id": "3", "blog_id": "3", "user_id": "2" },
-    { "id": "4", "blog_id": "3", "user_id": "3" }
+    {
+      "id": "1",
+      "blog_id": "1",
+      "user_id": "2"
+    },
+    {
+      "id": "2",
+      "blog_id": "3",
+      "user_id": "1"
+    },
+    {
+      "id": "3",
+      "blog_id": "3",
+      "user_id": "2"
+    },
+    {
+      "id": "4",
+      "blog_id": "3",
+      "user_id": "3"
+    }
   ],
-
   "comments": [
     {
       "id": "1",
@@ -55,6 +82,11 @@
       "user_id": "1",
       "text": "im tohid, first comment"
     },
-    { "id": "2", "blog_id": "1", "user_id": "2", "text": "im ali, 2nd comment" }
+    {
+      "id": "2",
+      "blog_id": "1",
+      "user_id": "2",
+      "text": "im ali, 2nd comment"
+    }
   ]
 }

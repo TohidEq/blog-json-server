@@ -4,10 +4,16 @@ import { useEffect } from "react";
 type Props = {};
 
 const useAuth = () => {
-  const [isAuthenticated, setIsAuth] = useState<boolean>(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  var isLoading = true;
 
-  // bla bla bla
+  var isAuthenticated =
+    !(sessionStorage.getItem("username") === "" ||
+    sessionStorage.getItem("username") === null);
+
+  isLoading = false;
+  console.log("useAuth *");
+  console.log("isAuth: ", isAuthenticated);
+  console.log("username: ", sessionStorage.getItem("username"));
 
   return { isAuthenticated, isLoading };
 };
