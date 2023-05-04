@@ -2,12 +2,12 @@ import React from "react";
 import Card from "./card/Card";
 import { FaEye, FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
-import { useAuthenticationStatus } from "@nhost/react";
+
 
 type Props = {};
 
 export default function Home({}: Props) {
-  const { isAuthenticated, isLoading } = useAuthenticationStatus();
+  const { isAuthenticated, isLoading } = {isAuthenticated:true,isLoading:false}
 
   return (
     <div className="Home">

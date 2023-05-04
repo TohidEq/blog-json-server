@@ -1,10 +1,11 @@
-import { useSignOut } from "@nhost/react";
 import React from "react";
 
 type Props = {};
 
 function Profile({}: Props) {
-  const { signOut } = useSignOut();
+  const signOut = () => {
+    sessionStorage.clear();
+  };
   return (
     <div>
       Profile

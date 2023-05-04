@@ -1,20 +1,18 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 
-import { useSignUpEmailPassword } from "@nhost/react";
-
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { faUser as farUser } from "@fortawesome/free-regular-svg-icons";
+
 import { Link, Navigate } from "react-router-dom";
 import { validEmail, validPassword, validName } from "../../../utils/regex";
 
 type Props = {};
 
 const SignUp = (props: Props) => {
-  const [email, setEmail] = useState<string>("");
-  const [passwrd, setPasswrd] = useState<string>("");
-  const [fName, setFName] = useState<string>("");
-  const [lName, setLName] = useState<string>("");
+  const fName = useRef<HTMLInputElement>(null);
+  const lName = useRef<HTMLInputElement>(null);
+  const email = useRef<HTMLInputElement>(null);
+  const passwrd = useRef<HTMLInputElement>(null);
 
   const [error, setError] = useState<{
     email: boolean;
@@ -28,14 +26,6 @@ const SignUp = (props: Props) => {
     lastName: false,
   });
 
-  const {
-    signUpEmailPassword,
-    isLoading,
-    isSuccess,
-    needsEmailVerification,
-    isError,
-    error: nhostError,
-  } = useSignUpEmailPassword();
   const [showPasswrd, setShowPasswrd] = useState<boolean>(false);
 
   const showPasswrdHandler = () => {
@@ -44,34 +34,23 @@ const SignUp = (props: Props) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (handleCheckSubmit()) {
-      signUpEmailPassword(email, passwrd, {
-        displayName: `${fName} ${lName}`.trim(),
-        metadata: {
-          fName,
-          lName,
-        },
-      });
-    } else {
-    }
-
     // email, passwrd bla bla bla
+    if (handleCheckSubmit()) {
+      console.log("pass");
+    } else {
+      alert("error");
+    }
   };
-  if (isSuccess) {
-    return <Navigate to="/" replace={true} />;
-  }
-
-  const disableForm = isLoading || needsEmailVerification;
 
   const handleCheckSubmit = (): boolean => {
     // check email by regex
-    error.email = !validEmail.test(email);
+    error.email = !validEmail.test(email.current!.value);
     // check password by regex
-    error.passwrd = !validPassword.test(passwrd);
+    error.passwrd = !validPassword.test(passwrd.current!.value);
     //check first name by regex
-    error.firstName = !validName.test(fName);
+    error.firstName = !validName.test(fName.current!.value);
     //check last name by regex
-    error.lastName = !validName.test(lName);
+    error.lastName = !validName.test(lName.current!.value);
 
     setError({ ...error });
 
@@ -85,107 +64,81 @@ const SignUp = (props: Props) => {
     <div className="sign-in-up">
       <h2 className="page-title">Sign up</h2>
 
-      {needsEmailVerification ? (
-        <p className="nhost-msg grid grid-cols-1">
-          <span>
-            Please check your mailbox and follow the verification link to verify
-            your email.
-          </span>
-          <Link to="/sign-in" className="text-xl my-2 text-center">
-            Sign in
-          </Link>
+      <form action="" autoComplete="off" onSubmit={handleSubmit}>
+        <div className="names-input">
+          <div
+            className={
+              error.firstName ? "error input names-input" : "input names-input"
+            }
+          >
+            <input
+              className=""
+              autoComplete="off"
+              ref={fName}
+              id="firstName"
+              type="text"
+              placeholder="First name"
+            />
+          </div>
+          <div className={error.lastName ? "error input" : "input"}>
+            <input
+              autoComplete="off"
+              ref={lName}
+              id="lastName"
+              type="text"
+              placeholder="Last name"
+            />
+          </div>
+        </div>
+
+        <div className={error.email ? "error input" : "input"}>
+          <input
+            autoComplete="off"
+            ref={email}
+            id="email"
+            type="email"
+            placeholder="Email"
+          />
+        </div>
+        <div className={error.passwrd ? "error input" : "input"}>
+          <input
+            autoComplete="off"
+            ref={passwrd}
+            id="passwrd"
+            type={showPasswrd ? "text" : "password"}
+            placeholder="Password"
+          />
+          <div className="show-passwrd" onClick={showPasswrdHandler}>
+            {showPasswrd ? <FaEye /> : <FaEyeSlash />}
+          </div>
+        </div>
+        <div className="btns">
+          <button className="btn" type="submit">
+            Create account
+          </button>
+          <Link to="/sign-in">Have account? Sign in</Link>
+        </div>
+        <p className="error">
+          {(error.email ||
+            error.passwrd ||
+            error.firstName ||
+            error.lastName) && (
+            <>
+              Please insert correct values.
+              <br />
+              <br />
+            </>
+          )}
+
+          {error.passwrd && (
+            <>
+              Passwords should be a minimum of 8 characters in length. Longer
+              passwords are more secure and should contain upper and lower case
+              characters, numbers, and special characters
+            </>
+          )}
         </p>
-      ) : (
-        <form action="" autoComplete="off" onSubmit={handleSubmit}>
-          <div className="names-input">
-            <div
-              className={
-                error.firstName
-                  ? "error input names-input"
-                  : "input names-input"
-              }
-            >
-              <input
-                className=""
-                autoComplete="off"
-                onChange={(e) => setFName(e.target.value)}
-                value={fName}
-                id="firstName"
-                type="text"
-                placeholder="First name"
-                disabled={disableForm}
-              />
-            </div>
-            <div className={error.lastName ? "error input" : "input"}>
-              <input
-                autoComplete="off"
-                onChange={(e) => setLName(e.target.value)}
-                value={lName}
-                id="lastName"
-                type="text"
-                placeholder="Last name"
-                disabled={disableForm}
-              />
-            </div>
-          </div>
-
-          <div className={error.email ? "error input" : "input"}>
-            <input
-              autoComplete="off"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-              id="email"
-              type="email"
-              placeholder="Email"
-              disabled={disableForm}
-            />
-          </div>
-          <div className={error.passwrd ? "error input" : "input"}>
-            <input
-              autoComplete="off"
-              onChange={(e) => setPasswrd(e.target.value)}
-              id="passwrd"
-              value={passwrd}
-              type={showPasswrd ? "text" : "password"}
-              placeholder="Password"
-              disabled={disableForm}
-            />
-            <div className="show-passwrd" onClick={showPasswrdHandler}>
-              {showPasswrd ? <FaEye /> : <FaEyeSlash />}
-            </div>
-          </div>
-          <div className="btns">
-            <button className="btn" type="submit" disabled={disableForm}>
-              {isLoading ? "Loading..." : "Create account"}
-            </button>
-            <Link to="/sign-in">Have account? Sign in</Link>
-          </div>
-          <p className="error">
-            {(error.email ||
-              error.passwrd ||
-              error.firstName ||
-              error.lastName) && (
-              <>
-                Please insert correct values.
-                <br />
-                <br />
-              </>
-            )}
-
-            {error.passwrd && (
-              <>
-                Passwords should be a minimum of 8 characters in length. Longer
-                passwords are more secure and should contain upper and lower
-                case characters, numbers, and special characters
-                <br />
-                <br />
-              </>
-            )}
-
-            {isError && <>{nhostError?.message}</>}
-          </p>
-        </form>
-      )}
+      </form>
     </div>
   );
 };

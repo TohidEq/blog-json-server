@@ -1,5 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
   FaUserCircle,
   FaHome,
@@ -18,12 +16,9 @@ import { Link, NavLink } from "react-router-dom";
 import useTheme from "../../hooks/useTheme";
 import ProtectedRoute from "../ProtectedRoutes";
 import ProtectedComponent from "../ProtectedComponent";
-import { useAuthenticationStatus } from "@nhost/react";
 
-{
-  // <FontAwesomeIcon icon={farHeart} />
-  // <FontAwesomeIcon icon={faUser} />
-}
+
+
 
 type Props = {
   mode: string;
@@ -33,7 +28,10 @@ type Props = {
 const Sidebar = (props: Props) => {
   const { changeMode, mode } = props;
 
-  const { isAuthenticated, isLoading } = useAuthenticationStatus();
+  const { isAuthenticated, isLoading } = {
+    isAuthenticated: true,
+    isLoading: false,
+  };
 
   return (
     <aside>

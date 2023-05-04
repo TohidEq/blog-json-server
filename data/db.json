@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "tohid",
+      "email": "tohideq@gmail.com",
+      "password": "A@t123456"
+    },
+    {
+      "id": "2",
+      "username": "ali",
+      "email": "ali@gmail.com",
+      "password": "A@a123456"
+    },
+    {
+      "id": "3",
+      "username": "mmd",
+      "email": "mmd@gmail.com",
+      "password": "A@m123456"
+    }
+  ],
+
+  "blogs": [
+    {
+      "id": "1",
+      "user_id": "1",
+      "text": "im tohid, this is my first post, :D",
+      "created_at": "1682972086503"
+    },
+    {
+      "id": "2",
+      "user_id": "1",
+      "text": "im tohis, this is my 2nd post, :D",
+      "created_at": "1682972686503"
+    },
+    {
+      "id": "3",
+      "user_id": "3",
+      "text": "im mmd, this is my first post, :D",
+      "created_at": "1682972886503"
+    }
+  ],
+
+  "likes": [
+    { "id": "1", "blog_id": "1", "user_id": "2" },
+    { "id": "2", "blog_id": "3", "user_id": "1" },
+    { "id": "3", "blog_id": "3", "user_id": "2" },
+    { "id": "4", "blog_id": "3", "user_id": "3" }
+  ],
+
+  "comments": [
+    {
+      "id": "1",
+      "blog_id": "1",
+      "user_id": "1",
+      "text": "im tohid, first comment"
+    },
+    { "id": "2", "blog_id": "1", "user_id": "2", "text": "im ali, 2nd comment" }
+  ]
+}
