@@ -6,9 +6,10 @@ type Props = {};
 const useAuth = () => {
   var isLoading = true;
 
-  var isAuthenticated =
-    !(sessionStorage.getItem("username") === "" ||
-    sessionStorage.getItem("username") === null);
+  var isAuthenticated = !(
+    sessionStorage.getItem("username") === "" ||
+    sessionStorage.getItem("username") === null
+  );
 
   isLoading = false;
   console.log("useAuth *");

@@ -2,7 +2,7 @@ import { Component, ComponentElement } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 
-const ProtectedRoute = ({ children }: any) => {
+const ProtectedRoute = ({ children }: ReactElement<any, any>) => {
   var { isAuthenticated, isLoading } = useAuth();
 
   const location = useLocation();
