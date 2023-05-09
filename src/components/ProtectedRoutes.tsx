@@ -5,13 +5,17 @@ import react from "@vitejs/plugin-react";
 import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const isAuthenticated = true;
+  const isAuthenticated = useSelector(
+    (state: { isAuthenticated: boolean }) => state.isAuthenticated
+  );
   console.log("useAuth: :: :", isAuthenticated);
+
+  let location = useLocation();
 
   console.log("childdddd", children);
 
   if (!isAuthenticated) {
-    return <Navigate to="/sign-in" state={{ from: location }} replace />;
+    return <Navigate to="/sign-in" replace state={{ from: location }} />;
   }
 
   return children;

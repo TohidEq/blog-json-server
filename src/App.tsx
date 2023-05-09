@@ -18,8 +18,6 @@ import Home from "./components/Home";
 
 import { Provider } from "react-redux";
 
-import ProtectedRoutes3 from "./components/ProtectedRoutes3";
-
 function App() {
   const { mode, changeMode } = useTheme();
 
@@ -57,18 +55,14 @@ function App() {
                 }
               />
 
-              {/* <Route
-                  path="/create"
-                  element={
-                    <ProtectedRoute>
-                      <Create />
-                    </ProtectedRoute>
-                  }
-                /> */}
-
-              {/* <ProtectedRoutes3 path="/create">
-                <Create />
-              </ProtectedRoutes3> */}
+              <Route
+                path="/create"
+                element={
+                  <ProtectedRoute>
+                    <Create />
+                  </ProtectedRoute>
+                }
+              />
 
               <Route path="/*" element={<NotFound />} />
             </Routes>
