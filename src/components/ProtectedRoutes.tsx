@@ -1,16 +1,14 @@
-import { Component, ComponentElement } from "react";
+import { Component, ComponentElement, ReactElement } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import react from "@vitejs/plugin-react";
+import { useSelector } from "react-redux";
 
-const ProtectedRoute = ({ children }: ReactElement<any, any>) => {
-  var { isAuthenticated, isLoading } = useAuth();
+const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
+  const isAuthenticated = true;
+  console.log("useAuth: :: :", isAuthenticated);
 
-  const location = useLocation();
-  console.log("protected routes *");
-
-  if (isLoading) {
-    return <div>...</div>;
-  }
+  console.log("childdddd", children);
 
   if (!isAuthenticated) {
     return <Navigate to="/sign-in" state={{ from: location }} replace />;

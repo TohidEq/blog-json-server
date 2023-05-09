@@ -16,6 +16,10 @@ import Profile from "./components/pages/profile/Profile";
 import Create from "./components/pages/create/Create";
 import Home from "./components/Home";
 
+import { Provider } from "react-redux";
+
+import ProtectedRoutes3 from "./components/ProtectedRoutes3";
+
 function App() {
   const { mode, changeMode } = useTheme();
 
@@ -44,16 +48,27 @@ function App() {
 
               <Route path="/about-us" element={<AboutUs />} />
 
-              <Route path="/profile" element={<Profile />} />
-
               <Route
-                path="/create"
+                path="/myprofile"
                 element={
                   <ProtectedRoute>
-                    <Create />
+                    <Profile />
                   </ProtectedRoute>
                 }
               />
+
+              {/* <Route
+                  path="/create"
+                  element={
+                    <ProtectedRoute>
+                      <Create />
+                    </ProtectedRoute>
+                  }
+                /> */}
+
+              {/* <ProtectedRoutes3 path="/create">
+                <Create />
+              </ProtectedRoutes3> */}
 
               <Route path="/*" element={<NotFound />} />
             </Routes>

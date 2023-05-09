@@ -22,6 +22,7 @@ export default function Home({}: Props) {
       </div>
       <div className=" relative sm:w-fit sm:mx-auto">
         <Card
+        
           name="Tohid"
           text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
           likes={20}

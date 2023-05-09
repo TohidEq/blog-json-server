@@ -26,20 +26,20 @@ type Props = {
 const Sidebar = (props: Props) => {
   const { changeMode, mode } = props;
 
-  const { isAuthenticated, isLoading } = useAuth();
-  console.log("sidebar, isAuth and isLoading: ", isAuthenticated, isLoading);
+  const { isAuthenticated } = useAuth();
+  console.log("sidebar, isAuth and isLoading: ", isAuthenticated);
 
   return (
     <aside>
       {/* Profile of SignIn/Up --> */}
       <NavLink
-        to={isLoading || !isAuthenticated ? "/sign-in" : "/profile"}
+        to={isAuthenticated ? "/sign-in" : "/myprofile"}
         className="side-item side-profile"
       >
         <div className="svg rounded-full overflow-hidden">
-          {isLoading || !isAuthenticated ? <FaSignInAlt /> : <FaUserCircle />}
+          {isAuthenticated ? <FaSignInAlt /> : <FaUserCircle />}
         </div>
-        <span>{isLoading || !isAuthenticated ? "Sign in" : "Profile"}</span>
+        <span>{isAuthenticated ? "Sign in" : "Profile"}</span>
       </NavLink>
       {/* <-- end profile or SignIn/Up */}
       <div className="side-links-container">
