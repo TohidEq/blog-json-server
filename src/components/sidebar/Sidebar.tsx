@@ -14,9 +14,10 @@ import React from "react";
 
 import { Link, NavLink } from "react-router-dom";
 import useTheme from "../../hooks/useTheme";
-import ProtectedRoute from "../ProtectedRoutes";
+
 import ProtectedComponent from "../ProtectedComponent";
 import useAuth from "../../hooks/useAuth";
+import ProtectedSignInUp from "../pages/signInUp/ProtectedSignInUp";
 
 type Props = {
   mode: string;
@@ -33,18 +34,18 @@ const Sidebar = (props: Props) => {
     <aside>
       {/* Profile of SignIn/Up --> */}
       <NavLink
-        to={isAuthenticated ? "/sign-in" : "/myprofile"}
+        to={isAuthenticated ? "/myprofile" : "/sign-in"}
         className="side-item side-profile"
       >
         <div className="svg rounded-full overflow-hidden">
-          {isAuthenticated ? <FaSignInAlt /> : <FaUserCircle />}
+          {isAuthenticated ? <FaUserCircle /> : <FaSignInAlt />}
         </div>
-        <span>{isAuthenticated ? "Sign in" : "Profile"}</span>
+        <span>{isAuthenticated ? "Profile" : "Sign in"}</span>
       </NavLink>
       {/* <-- end profile or SignIn/Up */}
       <div className="side-links-container">
         <div className="side-links">
-          <NavLink to={"/home"} className="side-item" end>
+          <NavLink to={"/"} className="side-item" end>
             <div className="svg">
               <FaHome />
             </div>

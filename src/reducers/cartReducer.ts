@@ -1,8 +1,11 @@
 import { LOG_IN, LOG_OUT } from "../actionTypes/actionTypes";
 
 const initialState = {
-  isAuthenticated: true,
-  id: "",
+  isAuthenticated: !(
+    sessionStorage.getItem("user_id") === "" ||
+    sessionStorage.getItem("user_id") === null
+  ),
+  id: sessionStorage.getItem("user_id") || "",
 };
 
 const cartReducer = (state = initialState, action: any) => {

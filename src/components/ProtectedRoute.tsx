@@ -5,9 +5,7 @@ import react from "@vitejs/plugin-react";
 import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const isAuthenticated = useSelector(
-    (state: { isAuthenticated: boolean }) => state.isAuthenticated
-  );
+  const { isAuthenticated } = useAuth();
   console.log("useAuth: :: :", isAuthenticated);
 
   let location = useLocation();

@@ -2,15 +2,21 @@ import React, { useRef } from "react";
 import { useState } from "react";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { validEmail, validPassword, validUserName } from "../../../utils/regex";
 import axios from "../../../api/axios";
+import { useDispatch } from "react-redux";
+import { logIn } from "../../../actions/cartAction";
 
 type Props = {};
 
 const SignIn = (props: Props) => {
+  const dispatch = useDispatch();
+  let location = useLocation();
+
   const uName = useRef<HTMLInputElement>(null);
   const passwrd = useRef<HTMLInputElement>(null);
+  const [showPasswrd, setShowPasswrd] = useState<boolean>(false);
 
   const [error, setError] = useState<{
     uName: boolean;
@@ -19,12 +25,10 @@ const SignIn = (props: Props) => {
     uName: false,
     passwrd: false,
   });
-  const [showPasswrd, setShowPasswrd] = useState<boolean>(false);
 
   const showPasswrdHandler = () => {
     setShowPasswrd(!showPasswrd);
   };
-  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,9 +41,10 @@ const SignIn = (props: Props) => {
         } else {
           // log in
           console.log("Success!");
-          sessionStorage.setItem("username", uName.current!.value);
 
-          navigate("/");
+          sessionStorage.setItem("user_id", res.data[0].id);
+          dispatch({ ...logIn(), payload: { id: `${res.data[0].id}` } });
+          return <Navigate to="/" replace state={{ from: location }} />;
         }
       });
       console.log("pass");

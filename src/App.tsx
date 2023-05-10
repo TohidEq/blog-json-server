@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Sidebar from "./components/sidebar/Sidebar";
 
-import ProtectedRoute from "./components/ProtectedRoutes";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import Layout from "./components/Layout";
 
@@ -17,6 +17,7 @@ import Create from "./components/pages/create/Create";
 import Home from "./components/Home";
 
 import { Provider } from "react-redux";
+import ProtectedSignInUp from "./components/pages/signInUp/ProtectedSignInUp";
 
 function App() {
   const { mode, changeMode } = useTheme();
@@ -33,15 +34,26 @@ function App() {
               <Route
                 path="/"
                 element={
-                  <ProtectedRoute>
                     <Layout />
-                  </ProtectedRoute>
                 }
               ></Route>
-              <Route path="/home" element={<Home />}></Route>
 
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/sign-in" element={<SignIn />} />
+              <Route
+                path="/sign-up"
+                element={
+                  <ProtectedSignInUp>
+                    <SignUp />
+                  </ProtectedSignInUp>
+                }
+              />
+              <Route
+                path="/sign-in"
+                element={
+                  <ProtectedSignInUp>
+                    <SignIn />
+                  </ProtectedSignInUp>
+                }
+              />
               <Route path="/search" element={<Search />} />
 
               <Route path="/about-us" element={<AboutUs />} />

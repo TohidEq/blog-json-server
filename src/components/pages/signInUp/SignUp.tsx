@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import {
   validEmail,
   validPassword,
@@ -11,10 +11,15 @@ import {
   validUserName,
 } from "../../../utils/regex";
 import axios from "../../../api/axios";
+import { logIn } from "../../../actions/cartAction";
+import { useDispatch } from "react-redux";
 
 type Props = {};
 
 const SignUp = (props: Props) => {
+  const dispatch = useDispatch();
+  let location = useLocation();
+
   const fName = useRef<HTMLInputElement>(null);
   const lName = useRef<HTMLInputElement>(null);
   const email = useRef<HTMLInputElement>(null);
@@ -57,7 +62,17 @@ const SignUp = (props: Props) => {
           ...data,
         })
         .then((response) => {
-          console.log("Success :D -> ", response);
+          console.log("Success signup :D -> ", response);
+          axios
+            .get(`users?username=${uName.current!.value}`)
+            .then((res: any) => {
+              // log in
+              console.log("Success signin(inside signup)!");
+
+              sessionStorage.setItem("user_id", res.data[0].id);
+              dispatch({ ...logIn(), payload: { id: `${res.data[0].id}` } });
+              return <Navigate to="/" replace state={{ from: location }} />;
+            });
         })
         .catch((error) => {
           console.log("error :(  -> ", error);

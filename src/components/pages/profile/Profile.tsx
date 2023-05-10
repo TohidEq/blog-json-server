@@ -5,6 +5,7 @@ import { logIn, logOut } from "../../../actions/cartAction";
 type Props = {};
 
 function Profile({}: Props) {
+  const dispatch = useDispatch();
   const signOut = () => {
     sessionStorage.clear();
     dispatch(logOut());
@@ -13,7 +14,6 @@ function Profile({}: Props) {
     (state: { id: string; isAuthenticated: boolean }) => state
   );
 
-  const dispatch = useDispatch();
   return (
     <div>
       Profile
@@ -21,7 +21,6 @@ function Profile({}: Props) {
       <div
         onClick={() => {
           console.log("clicked");
-          dispatch({ ...logIn(), payload: { id: "123431" } });
         }}
       >
         your redux:{myredux.id} and {myredux.isAuthenticated}
