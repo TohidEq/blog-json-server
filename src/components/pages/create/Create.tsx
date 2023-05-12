@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import TextareaAutosize from "react-textarea-autosize";
 
 type Props = {};
 const INSERT_BLOG = ``;
@@ -15,11 +16,11 @@ function Create({}: Props) {
       await console.log(1);
     } catch (error) {
       console.error("wtf?! we have an error: ", error);
-      setDisableForm(true)
+      setDisableForm(true);
       return alert("Error creating blog");
     }
 
-    setDisableForm(true)
+    setDisableForm(true);
     alert("blog Created");
   };
 
@@ -29,12 +30,12 @@ function Create({}: Props) {
 
       <form action="" onSubmit={handleSubmit}>
         <div className={"input"}>
-          <input
+          <TextareaAutosize
+            minRows={6}
             autoComplete="off"
             onChange={(e) => setBlog(e.target.value)}
             value={blog}
             id="text"
-            type="text"
             placeholder="text"
             disabled={disableForm}
           />
