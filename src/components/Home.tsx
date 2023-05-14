@@ -41,12 +41,20 @@ export default function Home({}: Props) {
 
       <div className=" relative sm:w-fit sm:mx-auto">
         <div className="page py-4">
+          <h2 className=" text-center">Home</h2>
           <h2 className=" text-center">
-            {isPending && ". . ."}
             {resData && resData?.length === 0 && "Ops... no more blogs"}
-            {!isPending && resData && resData?.length !== 0 && "Home"}
           </h2>
         </div>
+        {isPending && (
+          <Card
+            name="no user"
+            text=". . ."
+            likes={99}
+            comments={99}
+            date="1684090213669"
+          />
+        )}
         {!isPending && resData && resData?.length !== 0 && (
           <>
             {resData?.map((res) => {

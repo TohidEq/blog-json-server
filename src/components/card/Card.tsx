@@ -12,6 +12,36 @@ type Props = {
 };
 
 const Card = (props: Props) => {
+  if (props.name === "no user") {
+    const date = new Date(props.date);
+    return (
+      <>
+        {"123456".split("").map(() => (
+          <div className="card">
+            <Link to={"/#"} className="profile">
+              <FaUser className="border-[1px] sm:border-2" />
+              <span className="profile-name">. . .</span>
+            </Link>
+            <p className="text">.. .. .. ..</p>
+            <div className="post-information">
+              <span className="date">../.. ..:..</span>
+              <div className="icons">
+                <Link to={"#"}>
+                  <span>..</span>
+                  <FaComment />
+                </Link>
+                <Link to={"#"}>
+                  <span>..</span>
+                  <FaHeart />
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
+      </>
+    );
+  }
+
   const {
     data: userData,
     error: userError,
@@ -23,7 +53,10 @@ const Card = (props: Props) => {
     <div className="card">
       <Link to={"/some-user-profile"} className="profile">
         <FaUser className="border-[1px] sm:border-2" />
-        <span className="profile-name">{userData?.username}</span>
+        <span className="profile-name">
+          {userData?.username}
+          {userIsPending && "..."}
+        </span>
       </Link>
       <p className="text">{props.text}</p>
       <div className="post-information">
