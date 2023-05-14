@@ -60,7 +60,7 @@
 .sign-in-up .btns {
   @apply flex justify-between items-center flex-row-reverse;
 }
-.sign-in-up .btns .btn {
+.btn {
   @apply px-3 py-1;
 }
 .sign-in-up .btns a {
@@ -85,7 +85,7 @@
   -webkit-box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);
   box-shadow: inset 0px -21px 0px -17px rgba(255, 0, 0, 0.32);
 }
-.sign-in-up .btns .btn {
+.btn {
   @apply bg-light-dark-2 text-light-light-1 hover:bg-light-dark-2/70;
 }
 
@@ -93,7 +93,7 @@
   @apply text-light-red;
 }
 /* dark */
-.dark .sign-in-up .btn {
+.dark .btn {
   @apply hover:bg-dark-light-1;
 }
 .dark .sign-in-up input,

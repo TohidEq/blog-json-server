@@ -12,7 +12,6 @@ const useAuth = () => {
 
   console.log("useAuth *");
   console.log("isAuth: ", state);
-  console.log("username: ");
 
   return { isAuthenticated: state };
 };

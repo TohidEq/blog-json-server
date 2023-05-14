@@ -1,18 +1,13 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
 
 type Props = {
-  id: string;
+  startAt: number;
 };
 
-const useUser = (props: Props) => {
-  axios.get("blogs", {
-    params: {
-      id: props.id,
-    },
-  });
-
-  const [data, setData] = useState<IUser>();
+const useBlogs = (props: Props) => {
+  const [data, setData] = useState<IBlog[]>();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
@@ -23,14 +18,17 @@ const useUser = (props: Props) => {
       setIsPending(true);
       try {
         await axios
-          .get("users", {
+          .get("blogs", {
             params: {
-              id: props.id,
+              _sort: "created_at",
+              _order: "DESC",
+              _start: props.startAt,
+              _limit: 10,
             },
             signal: controller.signal,
           })
           .then((res) => {
-            const json = res.data[0];
+            const json = res.data;
             setError(null);
             setData(json);
             setIsPending(false);
@@ -54,9 +52,9 @@ const useUser = (props: Props) => {
     return () => {
       controller.abort();
     };
-  }, [props.id]);
+  }, [props.startAt]);
 
   return { data, isPending, error };
 };
 
-export default useUser;
+export default useBlogs;

@@ -1,5 +1,7 @@
 .card {
-  @apply mb-3 ml-4 mr-1 p-0 mx-auto max-w-md;
+  @apply mb-3 ml-4 mr-1 p-0 mx-auto 
+    sm:min-w-[440px] 
+    max-w-md;
 }
 
 /* profile */

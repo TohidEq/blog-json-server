@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import axios from "../../../api/axios";
@@ -7,6 +7,7 @@ import axios from "../../../api/axios";
 type Props = {};
 const INSERT_BLOG = ``;
 function Create({}: Props) {
+  let location = useLocation();
   const blogText = useRef<HTMLTextAreaElement>(null);
   const [disableForm, setDisableForm] = useState<boolean>(false);
 
@@ -27,7 +28,8 @@ function Create({}: Props) {
       });
 
     setDisableForm(true);
-    alert("blog Created");
+    // alert("blog Created");
+    return <Navigate to="/" replace state={{ from: location }} />;
   };
 
   return (
@@ -52,11 +54,6 @@ function Create({}: Props) {
             Create
           </button>
         </div>
-        <p>
-          {`line one
-          next      line
-          next line\nnext line with 'n'`}
-        </p>
       </form>
     </div>
   );

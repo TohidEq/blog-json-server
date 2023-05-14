@@ -3,118 +3,85 @@ import Card from "./card/Card";
 import { FaEye, FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { useState } from "react";
+import axios from "../api/axios";
+import useBlogs from "../hooks/useBlogs";
+import useUser from "../hooks/useUser";
 
 type Props = {};
 
 export default function Home({}: Props) {
   const { isAuthenticated } = useAuth();
 
+  const [startAt, setStartAt] = useState(0);
+  // `blogs?_sort=created_at&_order=DESC&_start=${startAt}&_limit=10`
+
+  const [data, setData] = useState<IBlog[]>();
+
+  console.log("test test test", startAt);
+  const res = axios.get("blogs", {
+    params: {
+      _sort: "created_at",
+      _order: "DESC",
+      _start: startAt,
+      _limit: 10,
+    },
+  });
+  const { data: resData, error, isPending } = useBlogs({ startAt: startAt });
+
   return (
     <div className="Home">
+      {/* (-> BTN-float (Create New Blog btn) */}
       <div className={`float-right ${!isAuthenticated ? "invisible" : ""}`}>
         <NavLink to={"/create"} className={"float-btn"}>
           <FaPlus />
         </NavLink>
       </div>
+      {/* end BTN-float <-) */}
+
       <div className=" relative sm:w-fit sm:mx-auto">
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
+        <div className="page py-4">
+          <h2 className=" text-center">
+            {isPending && ". . ."}
+            {resData && resData?.length === 0 && "Ops... no more blogs"}
+            {!isPending && resData && resData?.length !== 0 && "Home"}
+          </h2>
+        </div>
+        {!isPending && resData && resData?.length !== 0 && (
+          <>
+            {resData?.map((res) => {
+              return (
+                <Card
+                  name={res.user_id}
+                  text={res.text}
+                  likes={11}
+                  comments={11}
+                  date={res.created_at}
+                />
+              );
+            })}
+            <div className="w-full p-2 px-4 flex justify-around">
+              <button
+                className="btn inline "
+                onClick={() => {
+                  setStartAt(startAt - 10);
+                }}
+                disabled={startAt < 10}
+              >
+                Back
+              </button>
+              <button
+                className="btn inline "
+                onClick={() => {
+                  setStartAt(startAt + 10);
+                }}
+                disabled={resData && resData?.length < 10}
+              >
+                Next
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

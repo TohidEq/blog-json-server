@@ -1,13 +1,11 @@
-import React from 'react'
+import React from "react";
 
 type Props = {
-  
-}
+  blogs: IBlog[];
+};
 
 const ListCard = (props: Props) => {
-  return (
-    <div>ListCard</div>
-  )
-}
+  return <div>ListCard</div>;
+};
 
-export default ListCard
+export default ListCard;
