@@ -30,8 +30,8 @@
 }
 
 /* text */
-.card p.text {
-  @apply text-base sm:text-[20px] px-2 pb-1 pt-1
+.card .text {
+  @apply text-base whitespace-pre-wrap sm:text-[20px] px-2 pb-1 pt-1
    border-light-dark-2 border-l-2 sm:border-l-4;
 }
 

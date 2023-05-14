@@ -1327,7 +1327,8 @@ input:autofill {
 
 /* text */
 
-.card p.text{
+.card .text{
+  white-space: pre-wrap;
   border-left-width: 2px;
   --tw-border-opacity: 1;
   border-color: rgb(42 47 79 / var(--tw-border-opacity));
@@ -1340,7 +1341,7 @@ input:autofill {
 }
 
 @media (min-width: 640px){
-  .card p.text{
+  .card .text{
     border-left-width: 4px;
     font-size: 20px;
   }

@@ -1,24 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import axios from "../../../api/axios";
 
 type Props = {};
 const INSERT_BLOG = ``;
 function Create({}: Props) {
-  const [blog, setBlog] = useState<string>("");
-  const [passwrd, setPasswrd] = useState<string>("");
+  const blogText = useRef<HTMLTextAreaElement>(null);
   const [disableForm, setDisableForm] = useState<boolean>(false);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setDisableForm(true);
-    try {
-      await console.log(1);
-    } catch (error) {
-      console.error("wtf?! we have an error: ", error);
-      setDisableForm(true);
-      return alert("Error creating blog");
-    }
+    axios
+      .post("/blogs", {
+        user_id: sessionStorage.getItem("user_id"),
+        text: blogText.current!.value,
+        created_at: new Date().getTime(),
+      })
+      .then((response) => {
+        console.log("Success post: ", response);
+      })
+      .catch((error) => {
+        console.log("Error post: ", error);
+      });
 
     setDisableForm(true);
     alert("blog Created");
@@ -31,10 +37,10 @@ function Create({}: Props) {
       <form action="" onSubmit={handleSubmit}>
         <div className={"input"}>
           <TextareaAutosize
+            required
             minRows={6}
             autoComplete="off"
-            onChange={(e) => setBlog(e.target.value)}
-            value={blog}
+            ref={blogText}
             id="text"
             placeholder="text"
             disabled={disableForm}
@@ -46,6 +52,11 @@ function Create({}: Props) {
             Create
           </button>
         </div>
+        <p>
+          {`line one
+          next      line
+          next line\nnext line with 'n'`}
+        </p>
       </form>
     </div>
   );
