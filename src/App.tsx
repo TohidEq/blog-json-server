@@ -31,12 +31,7 @@ function App() {
           <main>
             <Routes>
               {/* <Route path="/" element={<Home />} /> */}
-              <Route
-                path="/"
-                element={
-                    <Layout />
-                }
-              ></Route>
+              <Route path="/" element={<Layout />}></Route>
 
               <Route
                 path="/sign-up"
@@ -58,14 +53,7 @@ function App() {
 
               <Route path="/about-us" element={<AboutUs />} />
 
-              <Route
-                path="/myprofile"
-                element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                }
-              />
+              <Route path="/profile/:username/*" element={<Profile />} />
 
               <Route
                 path="/create"

@@ -15,6 +15,7 @@ const MyProfile = (props: Props) => {
   );
   return (
     <div className="user">
+      <button onClick={signOut}>LogOUt</button>
       <div className="user-basic-data">
         <div className="user-img">user-img</div>
         <div className="user-names">

@@ -43,7 +43,14 @@ const SignIn = (props: Props) => {
           console.log("Success!");
 
           sessionStorage.setItem("user_id", res.data[0].id);
-          dispatch({ ...logIn(), payload: { id: `${res.data[0].id}` } });
+          sessionStorage.setItem("username", res.data[0].username);
+          dispatch({
+            ...logIn(),
+            payload: {
+              id: `${res.data[0].id}`,
+              username: `${res.data[0].username}`,
+            },
+          });
           return <Navigate to="/" replace state={{ from: location }} />;
         }
       });

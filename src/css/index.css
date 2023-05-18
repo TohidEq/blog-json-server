@@ -535,16 +535,8 @@ video {
   margin-right: auto;
 }
 
-.mr-2{
-  margin-right: 0.5rem;
-}
-
 .block{
   display: block;
-}
-
-.inline-block{
-  display: inline-block;
 }
 
 .inline{
@@ -584,10 +576,6 @@ video {
   justify-content: center;
 }
 
-.justify-between{
-  justify-content: space-between;
-}
-
 .justify-around{
   justify-content: space-around;
 }
@@ -617,24 +605,24 @@ video {
   padding-right: 0.5rem;
 }
 
-.py-3{
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.py-5{
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
 .px-4{
   padding-left: 1rem;
   padding-right: 1rem;
 }
 
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .py-4{
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.py-5{
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .pt-2{
@@ -643,10 +631,6 @@ video {
 
 .pt-5{
   padding-top: 1.25rem;
-}
-
-.pr-2{
-  padding-right: 0.5rem;
 }
 
 .text-center{
@@ -997,8 +981,8 @@ aside .side-item span{
 
 @media (min-width: 640px){
   .side-links .svg{
-    margin-left: 13px;
-    margin-right: 13px;
+    margin-left: 12px;
+    margin-right: 12px;
   }
 }
 

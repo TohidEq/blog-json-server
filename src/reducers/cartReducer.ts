@@ -6,6 +6,7 @@ const initialState = {
     sessionStorage.getItem("user_id") === null
   ),
   id: sessionStorage.getItem("user_id") || "",
+  username: sessionStorage.getItem("username") || "",
 };
 
 const cartReducer = (state = initialState, action: any) => {
@@ -15,6 +16,7 @@ const cartReducer = (state = initialState, action: any) => {
         ...state,
         isAuthenticated: true,
         id: action.payload.id,
+        username: action.payload.username,
       };
 
     case LOG_OUT:
@@ -22,6 +24,7 @@ const cartReducer = (state = initialState, action: any) => {
         ...state,
         isAuthenticated: false,
         id: "",
+        username: "",
       };
     default:
       return state;

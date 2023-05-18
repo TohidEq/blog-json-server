@@ -7,13 +7,17 @@ type Props = {};
 
 const useAuth = () => {
   var state = useSelector(
-    (state: { isAuthenticated: boolean }) => state
-  ).isAuthenticated;
+    (state: { isAuthenticated: boolean; username: string; id: string }) => state
+  );
 
   console.log("useAuth *");
   console.log("isAuth: ", state);
 
-  return { isAuthenticated: state };
+  return {
+    isAuthenticated: state.isAuthenticated,
+    username: state.username,
+    id: state.id,
+  };
 };
 
 export default useAuth;
