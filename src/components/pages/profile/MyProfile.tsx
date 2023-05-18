@@ -1,21 +1,25 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../actions/cartAction";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const MyProfile = (props: Props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const signOut = () => {
     sessionStorage.clear();
     dispatch(logOut());
+    navigate("/sign-in");
   };
+
   const myredux = useSelector(
-    (state: { id: string; isAuthenticated: boolean }) => state
+    (state: { username: string; id: string; isAuthenticated: boolean }) => state
   );
+
   return (
     <div className="user">
-      <button onClick={signOut}>LogOUt</button>
       <div className="user-basic-data">
         <div className="user-img">user-img</div>
         <div className="user-names">

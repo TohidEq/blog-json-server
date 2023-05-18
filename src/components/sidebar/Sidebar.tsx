@@ -27,14 +27,14 @@ type Props = {
 const Sidebar = (props: Props) => {
   const { changeMode, mode } = props;
 
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, username } = useAuth();
   console.log("sidebar, isAuth and isLoading: ", isAuthenticated);
 
   return (
     <aside>
       {/* Profile of SignIn/Up --> */}
       <NavLink
-        to={isAuthenticated ? "/myprofile" : "/sign-in"}
+        to={isAuthenticated ? `/profile/${username}` : "/sign-in"}
         className="side-item side-profile"
       >
         <div className="svg rounded-full overflow-hidden">
