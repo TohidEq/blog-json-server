@@ -1,0 +1,20 @@
+.user {
+  @apply mx-auto
+}
+
+.user-basic-data {
+  @apply flex
+}
+.user-basic-data .user-img{
+  @apply w-24 h-24 
+    bg-yellow
+    rounded-s-full 
+    overflow-hidden
+}
+.user-real-name{
+  @apply bg-dark-dark-2
+}
+
+
+
+

@@ -2,6 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../actions/cartAction";
 import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa";
+
+
+import testprofile from '../../../images/profiles/testprofile.jpeg'
 
 type Props = {};
 
@@ -17,15 +21,20 @@ const MyProfile = (props: Props) => {
   const myredux = useSelector(
     (state: { username: string; id: string; isAuthenticated: boolean }) => state
   );
-
   return (
     <div className="user">
+
       <div className="user-basic-data">
-        <div className="user-img">user-img</div>
-        <div className="user-names">
-          <div className="user-real-name">Bla BlaZade</div>
-          <div className="username">@ blaBlabla</div>
+
+        <div className="user-img">
+          <img src={testprofile}/>
         </div>
+        
+        <div className="user-names">
+          <div className="user-real-name">Tohid Eghdami</div>
+          <div className="username">@TohidEq</div>
+        </div>
+
       </div>
 
       <div className="user-summary">

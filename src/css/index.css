@@ -1488,3 +1488,27 @@ input:autofill {
 .dark .card .post-information .date{
   color: rgb(229 190 236 / 0.8);
 }
+
+.user{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.user-basic-data{
+  display: flex;
+}
+
+.user-basic-data .user-img{
+  height: 6rem;
+  width: 6rem;
+  overflow: hidden;
+  border-start-start-radius: 9999px;
+  border-end-start-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(240 235 141 / var(--tw-bg-opacity));
+}
+
+.user-real-name{
+  --tw-bg-opacity: 1;
+  background-color: rgb(24 18 43 / var(--tw-bg-opacity));
+}
