@@ -1,18 +1,43 @@
+.profile{
+  @apply bg-purple py-1 
+}
+
+
 .user {
-  @apply mx-auto
+  @apply mx-auto 
+    bg-yellow
+    sm:max-w-lg
+    lg:max-w-xl
 }
 
 .user-basic-data {
   @apply flex
 }
+.user-names{
+  @apply font-bold
+    grid content-center
+    pl-2
+}
 .user-basic-data .user-img{
-  @apply w-24 h-24 
-    bg-yellow
-    rounded-s-full 
+  @apply w-14 h-14 
+    sm:w-16 sm:h-16
+    md:w-20 md:h-20
+    bg-light-red/50
+    rounded-full
     overflow-hidden
 }
-.user-real-name{
-  @apply bg-dark-dark-2
+.user-basic-data .user-real-name{
+  @apply bg-light-red/30
+    text-base
+}
+.user-basic-data .username{
+  @apply bg-purple/20
+}
+
+
+
+.user-summary {
+  @apply bg-light-red
 }
 
 
