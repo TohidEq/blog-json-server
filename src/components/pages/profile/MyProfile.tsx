@@ -31,15 +31,14 @@ const MyProfile = (props: Props) => {
         </div>
         
         <div className="user-names">
-          <div className="user-real-name">Tohid Eghdami</div>
-          <div className="username">@TohidEq</div>
+          <div className="user-real-name">{myredux.username}</div>
+          <div className="username">@TohidEqqqqqqqq</div>
         </div>
 
       </div>
 
       <div className="user-summary">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eos
-        animi! Quos, adipisci explicabo! Facilis rerum minus.
       </div>
     </div>
   );

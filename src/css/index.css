@@ -1490,17 +1490,16 @@ input:autofill {
 }
 
 .profile{
-  --tw-bg-opacity: 1;
-  background-color: rgb(143 67 238 / var(--tw-bg-opacity));
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
 
 .user{
+  margin: 0.25rem;
   margin-left: auto;
   margin-right: auto;
-  --tw-bg-opacity: 1;
-  background-color: rgb(240 235 141 / var(--tw-bg-opacity));
+  background-color: rgb(99 89 133 / 0.1);
+  padding: 0.5rem;
 }
 
 @media (min-width: 640px){
@@ -1521,9 +1520,22 @@ input:autofill {
 
 .user-names{
   display: grid;
-  align-content: center;
+  max-width: 150px;
+  align-content: space-around;
   padding-left: 0.5rem;
   font-weight: 700;
+}
+
+@media (min-width: 640px){
+  .user-names{
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 768px){
+  .user-names{
+    max-width: 500px;
+  }
 }
 
 .user-basic-data .user-img{
@@ -1531,7 +1543,6 @@ input:autofill {
   width: 3.5rem;
   overflow: hidden;
   border-radius: 9999px;
-  background-color: rgb(197 61 95 / 0.5);
 }
 
 @media (min-width: 640px){
@@ -1549,16 +1560,66 @@ input:autofill {
 }
 
 .user-basic-data .user-real-name{
-  background-color: rgb(197 61 95 / 0.3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+@media (min-width: 768px){
+  .user-basic-data .user-real-name{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+.user-basic-data .username{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-size: 1rem;
   line-height: 1.5rem;
 }
 
-.user-basic-data .username{
-  background-color: rgb(143 67 238 / 0.2);
+@media (min-width: 768px){
+  .user-basic-data .username{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
 
 .user-summary{
-  --tw-bg-opacity: 1;
-  background-color: rgb(197 61 95 / var(--tw-bg-opacity));
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-top-width: 2px;
+  border-top-color: rgb(68 60 104 / 0.6);
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@media (min-width: 768px){
+  .user-summary{
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+.user-navlinks{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: stretch;
+}
+
+.user-navlinks a{
+  border-bottom-width: 2px;
+  border-bottom-color: transparent;
+  text-align: center;
+}
+
+/* theme */
+
+.user-navlinks a.active{
+  border-bottom-color: rgb(68 60 104 / 0.5);
 }
