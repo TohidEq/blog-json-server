@@ -4,25 +4,36 @@ import { logOut } from "../../../actions/cartAction";
 import { useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
+import useAuth from "../../../hooks/useAuth";
+
+import IUser from "../../../models/IUsers"
 
 import testprofile from '../../../images/profiles/testprofile.jpeg'
 
-type Props = {};
+type Props = {
+         data: IUser
+         };
 
 const MyProfile = (props: Props) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const {id, fname, lname, summary, username} = props.data
+
+  console.log("gololo",id,username,fname,lname,summary);
+  
+
   const signOut = () => {
     sessionStorage.clear();
     dispatch(logOut());
     navigate("/sign-in");
   };
 
-  const myredux = useSelector(
-    (state: { username: string; id: string; isAuthenticated: boolean }) => state
-  );
-  return (
-    <div className="user">
+   
+  
+  const { isAuthenticated, username:myUsername } = useAuth();
+
+  return ( <div className="user">
 
       <div className="user-basic-data">
 
@@ -31,15 +42,16 @@ const MyProfile = (props: Props) => {
         </div>
         
         <div className="user-names">
-          <div className="user-real-name">{myredux.username}</div>
-          <div className="username">@TohidEqqqqqqqq</div>
+          <div className="user-real-name">{`${fname} ${lname}`}</div>
+          <div className="username">@{username}</div>
         </div>
 
       </div>
 
       <div className="user-summary">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum, eos
-      </div>
+        {summary!==""? summary:"Nothing yet :D"} 
+
+      </div>  
     </div>
   );
 };

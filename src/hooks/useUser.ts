@@ -3,14 +3,18 @@ import axios from "../api/axios";
 
 type Props = {
   id: string;
+  username: string;
 };
 
 const useUser = (props: Props) => {
-  axios.get("blogs", {
-    params: {
-      id: props.id,
-    },
-  });
+
+  console.log("username useuser",props.username);
+  const myParams = props.username!==""? {
+    username:props.username
+  }:{
+    id:props.id
+  }
+  
 
   const [data, setData] = useState<IUser>();
   const [isPending, setIsPending] = useState(true);
@@ -24,9 +28,7 @@ const useUser = (props: Props) => {
       try {
         await axios
           .get("users", {
-            params: {
-              id: props.id,
-            },
+            params: myParams,
             signal: controller.signal,
           })
           .then((res) => {
@@ -49,7 +51,7 @@ const useUser = (props: Props) => {
         setIsPending(false);
       }
     };
-
+    
     fetchData();
     return () => {
       controller.abort();

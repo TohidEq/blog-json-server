@@ -3,15 +3,26 @@ import { useSelector, useDispatch } from "react-redux";
 import { logIn, logOut } from "../../../actions/cartAction";
 import MyProfile from "./MyProfile";
 import { Route, Routes, useParams, NavLink } from "react-router-dom";
+import axios from "../../../api/axios"
 
+
+import useUser from "../../../hooks/useUser";
+
+import Loading from "../Loading"
 type Props = {};
 
 function Profile({}: Props) {
-  const { username } = useParams();
+  const {username} = useParams();
+  const { data, isPending, error  } = useUser({id:"", username:username});
   console.log("username: ", username);
+
+  const res  = axios.get(`/users?username=${username}`)
+  console.log("res xx:",data);
+  
   return (
     <div className="profile">
-      <MyProfile />
+      <Loading isPending={isPending} error={error} />
+      { data && <MyProfile data={data} />}
 
       {/* NavigateLinks (Posts|Comments|Likes) */}
       <div className="user user-navlinks">

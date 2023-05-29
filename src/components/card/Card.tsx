@@ -46,9 +46,10 @@ const Card = (props: Props) => {
     data: userData,
     error: userError,
     isPending: userIsPending,
-  } = useUser({ id: props.name });
+  } = useUser({ id: props.name , username:""});
 
   const date = new Date(props.date);
+
   return (
     <div className="card">
       <Link to={"/some-user-profile"} className="profile">
