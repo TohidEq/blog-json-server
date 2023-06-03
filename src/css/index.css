@@ -637,6 +637,15 @@ video {
   text-align: center;
 }
 
+.text-light-red{
+  --tw-text-opacity: 1;
+  color: rgb(197 61 95 / var(--tw-text-opacity));
+}
+
+.hover\:text-opacity-75:hover{
+  --tw-text-opacity: 0.75;
+}
+
 @media (min-width: 640px){
   .sm\:mx-auto{
     margin-left: auto;
@@ -1591,10 +1600,10 @@ input:autofill {
 
 .user-summary{
   margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
   border-top-width: 2px;
   border-top-color: rgb(68 60 104 / 0.6);
   padding: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -1604,6 +1613,15 @@ input:autofill {
     font-size: 1rem;
     line-height: 1.5rem;
   }
+}
+
+.user .profile-btns{
+  display: flex;
+  justify-content: space-between;
+  border-top-width: 2px;
+  border-top-color: rgb(68 60 104 / 0.6);
+  padding: 0.5rem;
+  padding-bottom: 0px;
 }
 
 .user-navlinks{
@@ -1622,4 +1640,25 @@ input:autofill {
 
 .user-navlinks a.active{
   border-bottom-color: rgb(68 60 104 / 0.5);
+}
+
+.user .user-names .username{
+  --tw-text-opacity: 1;
+  color: rgb(68 60 104 / var(--tw-text-opacity));
+}
+
+.user .user-summary{
+  --tw-text-opacity: 1;
+  color: rgb(45 39 39 / var(--tw-text-opacity));
+}
+
+/* dark mode */
+
+.dark .user .user-names .username{
+  --tw-text-opacity: 1;
+  color: rgb(145 127 179 / var(--tw-text-opacity));
+}
+
+.dark .user .user-summary{
+  color: rgb(255 255 255 / 0.7);
 }

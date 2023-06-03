@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../../actions/cartAction";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 
 import useAuth from "../../../hooks/useAuth";
@@ -15,6 +15,7 @@ type Props = {
          };
 
 const MyProfile = (props: Props) => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -52,6 +53,18 @@ const MyProfile = (props: Props) => {
         {summary!==""? summary:"Nothing yet :D"} 
 
       </div>  
+
+      {isAuthenticated && myUsername===username && 
+        <div className="profile-btns">
+          <button className="text-light-red hover:text-opacity-75" onClick={signOut
+          }>
+            LogOut
+          </button>
+          <Link to="/editprofile" >
+            Edit
+          </Link>
+        </div>
+      }
     </div>
   );
 };

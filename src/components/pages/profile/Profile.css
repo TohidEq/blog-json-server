@@ -47,13 +47,27 @@
 
 
 .user-summary {
-  @apply p-2
-    my-2
+  @apply p-2 pb-2
+    mt-2
     text-sm
     md:text-base
     border-t-2
     border-t-dark-light-2/60
 }
+
+
+
+
+.user .profile-btns{
+  @apply flex 
+    justify-between
+    p-2
+    pb-0
+    border-t-2
+    border-t-dark-light-2/60
+
+}
+
 
 
 
@@ -71,6 +85,26 @@
 /* theme */
 .user-navlinks a.active{
   @apply border-b-dark-light-2/50
+}
+
+.user .user-names .username{
+  @apply text-dark-light-2
+}
+
+.user .user-summary{
+  @apply text-dark-2
+}
+
+
+
+/* dark mode */
+.dark .user .user-names .username{
+  @apply text-light-dark-1
+}
+
+
+.dark .user .user-summary{
+  @apply text-white/70
 }
 
 
