@@ -3,9 +3,9 @@
 @import "tailwindcss/utilities";
 @import "tailwindcss/variants";
 
-@import "./base/_page.css";
-@import "../components/sidebar/Sidebar.css";
-@import "../components/pages/signInUp/SignInUp.css";
-@import "../components/card/Card.css";
-@import "../components/pages/search/Search.css";
-@import "../components/pages/profile/Profile.css";
+@import "./base/_page.scss";
+@import "../components/sidebar/Sidebar.scss";
+@import "../components/pages/signInUp/SignInUp.scss";
+@import "../components/card/Card.scss";
+@import "../components/pages/search/Search.scss";
+@import "../components/pages/profile/Profile.scss";
