@@ -55,19 +55,9 @@ export default function Home({}: Props) {
             date="1684090213669"
           />
         )}
-        {!isPending && resData && resData?.length !== 0 && (
-          <>
-            {resData?.map((res) => {
-              return (
-                <Card
-                  name={res.user_id}
-                  text={res.text}
-                  likes={11}
-                  comments={11}
-                  date={res.created_at}
-                />
-              );
-            })}
+        {
+          !isPending  &&
+          (<>
             <div className="w-full p-2 px-4 flex justify-around">
               <button
                 className="btn inline "
@@ -88,8 +78,49 @@ export default function Home({}: Props) {
                 Next
               </button>
             </div>
+            </>)
+        }
+        {!isPending && resData && resData?.length !== 0 && (
+          <>
+            {resData?.map((res) => {
+              return (
+                <Card
+                  name={res.user_id}
+                  text={res.text}
+                  likes={11}
+                  comments={11}
+                  date={res.created_at}
+                />
+              );
+            })}
+            
           </>
         )}
+        {
+          !isPending && resData && resData?.length !== 0 &&
+          (<>
+            <div className="w-full p-2 px-4 flex justify-around">
+              <button
+                className="btn inline "
+                onClick={() => {
+                  setStartAt(startAt - 10);
+                }}
+                disabled={startAt < 10}
+              >
+                Back
+              </button>
+              <button
+                className="btn inline "
+                onClick={() => {
+                  setStartAt(startAt + 10);
+                }}
+                disabled={resData && resData?.length < 10}
+              >
+                Next
+              </button>
+            </div>
+            </>)
+        }
       </div>
     </div>
   );
