@@ -44,6 +44,24 @@
       "password": "asdASD@123",
       "id": "QIWkqwN",
       "summary": ""
+    },
+    {
+      "username": "TahaEq",
+      "fname": "Taha",
+      "lname": "Eghdami",
+      "email": "Taha@gmail.com",
+      "password": "zZ123123@2@",
+      "id": "71fmEoP",
+      "summary": ""
+    },
+    {
+      "username": "TahminEq",
+      "fname": "Tahmin",
+      "lname": "Eghdami",
+      "email": "Tahmin@gamil.com",
+      "password": "zZ123123@2@",
+      "summary": "",
+      "id": "H2yQM73"
     }
   ],
   "blogs": [
@@ -172,6 +190,24 @@
       "text": "reastr",
       "created_at": 1687634976227,
       "id": "wQPJUN7"
+    },
+    {
+      "user_id": "H2yQM73",
+      "text": "Salam Tahaaaa",
+      "created_at": 1687716938838,
+      "id": "Wfiwyco"
+    },
+    {
+      "user_id": "71fmEoP",
+      "text": "salam tahmin dadaaa",
+      "created_at": 1687716955354,
+      "id": "y2zjG1g"
+    },
+    {
+      "user_id": "1",
+      "text": "khafe shid",
+      "created_at": 1687716975670,
+      "id": "z5Cvg6y"
     }
   ],
   "likes": [

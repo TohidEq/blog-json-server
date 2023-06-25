@@ -56,7 +56,9 @@ const SignUp = (props: Props) => {
         lname: lName.current!.value,
         email: email.current!.value,
         password: passwrd.current!.value,
+        summary: ""
       };
+
       axios
         .post("/users", {
           ...data,
@@ -70,13 +72,22 @@ const SignUp = (props: Props) => {
               console.log("Success signin(inside signup)!");
 
               sessionStorage.setItem("user_id", res.data[0].id);
-              dispatch({ ...logIn(), payload: { id: `${res.data[0].id}` } });
+              sessionStorage.setItem("username", res.data[0].username);
+
+              dispatch({ 
+                ...logIn(),
+                   payload: {
+                    username: `${res.data[0].username}`,
+                    id: `${res.data[0].id}`
+                  }
+                });
               return <Navigate to="/" replace state={{ from: location }} />;
             });
         })
         .catch((error) => {
           console.log("error :(  -> ", error);
         });
+
       console.log("pass");
     } else {
       alert("error");
