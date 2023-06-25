@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
-import "./css/index.css";
+import "./css/index.scss";
 
 import { nhost } from "./utils/nhost";
 import { ThemeProvider } from "./context/ThemeContext";

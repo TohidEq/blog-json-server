@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "build-css": "tailwindcss --postcss -i ./src/css/tailwind.css -o ./src/css/index.css --watch",
+    "build-css": "tailwindcss --postcss -i ./src/css/tailwind.scss -o ./src/css/index.scss --watch",
     "run-json-server": "json-server --watch ./data/db.json --port 3001"
   },
   "dependencies": {
@@ -37,6 +37,7 @@
     "eslint-plugin-react": "^7.32.2",
     "postcss": "^8.4.22",
     "postcss-import": "^15.1.0",
+    "sass": "^1.63.6",
     "typescript": "^5.0.4",
     "vite": "^4.2.0"
   }

@@ -2,10 +2,14 @@ import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import Card from "../../card/Card";
+import { NavLink, useParams } from "react-router-dom";
 
 type Props = {};
 
 const Search = (props: Props) => {
+  const {method} = useParams().method!==undefined? useParams():{method:"posts"};
+  console.log("search method:",method);
+  
   const [search, setSearch] = useState<string>();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -40,6 +44,17 @@ const Search = (props: Props) => {
             </div>
           </div>
         </form>
+        <div className="search-options">
+          <NavLink to={`/search`} end>
+            Posts
+          </NavLink>
+          <NavLink to={`/search/comments`}>
+            Comments
+          </NavLink>
+          <NavLink to={`/search/profile`}>
+            Profs
+          </NavLink>
+        </div>
       </div>
 
       <div className="search-result w-fit mx-auto">

@@ -1,0 +1,24 @@
+.search-options {
+  @apply mx-auto 
+    w-full
+    sm:max-w-lg
+    lg:max-w-xl
+    p-2
+    m-1
+    mb-6
+    mt-0
+    bg-dark-light-1/10
+    grid grid-cols-3 justify-stretch;
+
+    a{
+        @apply text-center
+        border-b-2 border-b-transparent;
+
+        /* theme */
+        &.active{
+            @apply border-b-dark-light-2/50;
+        }
+
+    }
+
+}

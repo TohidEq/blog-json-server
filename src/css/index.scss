@@ -1498,6 +1498,50 @@ input:autofill {
   color: rgb(229 190 236 / 0.8);
 }
 
+.search-options{
+  margin: 0.25rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.5rem;
+  margin-top: 0px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  justify-content: stretch;
+  background-color: rgb(99 89 133 / 0.1);
+  padding: 0.5rem;
+}
+
+@media (min-width: 640px){
+  .search-options{
+    max-width: 32rem;
+  }
+}
+
+@media (min-width: 1024px){
+  .search-options{
+    max-width: 36rem;
+  }
+}
+
+.search-options {
+  a{
+    border-bottom-width: 2px;
+  }
+  a{
+    border-bottom-color: transparent;
+  }
+  a{
+    text-align: center;
+  }
+  a{
+    /* theme */
+    &.active{
+      border-bottom-color: rgb(68 60 104 / 0.5);
+    }
+  }
+}
+
 .profile{
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -1661,4 +1705,4 @@ input:autofill {
 
 .dark .user .user-summary{
   color: rgb(255 255 255 / 0.7);
-}
+} 

@@ -23,9 +23,12 @@ function Profile({}: Props) {
     <div className="profile">
       {isPending || error && <MyProfile data={{
           username:"...",
-          fname:"...", lname:"...",
+          fname:"...",
+          lname:"...",
           summary:"...",
-          id:"0"}}/> }
+          id:"0",
+          email:"",
+          password:""}}/> }
       { data && <MyProfile data={data} />}
 
       {/* NavigateLinks (Posts|Comments|Likes) */}

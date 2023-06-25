@@ -6,7 +6,6 @@ import { FaUserCircle } from "react-icons/fa";
 
 import useAuth from "../../../hooks/useAuth";
 
-import IUser from "../../../models/IUsers"
 
 import testprofile from '../../../images/profiles/testprofile.jpeg'
 

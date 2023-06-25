@@ -49,7 +49,9 @@ function App() {
                   </ProtectedSignInUp>
                 }
               />
-              <Route path="/search" element={<Search />} />
+
+              <Route path="/search/" element={<Search />} />
+              <Route path="/search/:method/" element={<Search />} />
 
               <Route path="/about-us" element={<AboutUs />} />
 

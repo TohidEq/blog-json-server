@@ -3,15 +3,18 @@ import axios from "../api/axios";
 
 type Props = {
   id: string;
-  username: string;
+  username: string | undefined; 
 };
 
 const useUser = (props: Props) => {
 
   console.log("username useuser",props.username);
-  const myParams = props.username!==""? {
+  const myParams = props.username!=="" ? 
+  {
     username:props.username
-  }:{
+  }
+    :
+  {
     id:props.id
   }
   
