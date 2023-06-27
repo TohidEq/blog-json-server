@@ -1,21 +1,38 @@
-import React from "react";
+import React, { useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import Card from "../../card/Card";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 
 type Props = {};
 
 const Search = (props: Props) => {
-  const {method} = useParams().method!==undefined? useParams():{method:"posts"};
-  console.log("search method:",method);
-  
-  const [search, setSearch] = useState<string>();
+  const { method } =
+    useParams().method !== undefined ? useParams() : { method: "blogs" }; // default value
+
+  console.log("search method:", method);
+  const navigate = useNavigate();
+
+  const search = useRef<HTMLInputElement>(null);
+  const [searchQ, setSearchQ] = useState("/search/");
+
+  //The location.search property is =
+  // a string that contains an initial ?
+  // followed by the key=value pairs in the query string.
+  // If there are no parameters, this value may be the empty string (i.e. '').
+  const queryString = useLocation().search;
+  const queryParams = new URLSearchParams(queryString);
+  const query = queryParams.get("q");
+
+  const url = "http://localhost:3001/" + method + "?q=" + query;
+
+  // const { error, data, isPending } = useFetch(url);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // email, passwrd bla bla bla
+    console.log("tttt:", url, query, queryString);
+    navigate(`/search/${method}?q=${search.current!.value}`);
   };
 
   return (
@@ -25,10 +42,10 @@ const Search = (props: Props) => {
         <form action="" onSubmit={handleSubmit} autoComplete="off">
           <div className={"input"}>
             <input
+              required
               autoComplete="off"
-              onChange={(e) => setSearch(e.target.value)}
+              ref={search}
               id="search"
-              value={search}
               type={"text"}
               placeholder="Search text..."
             />
@@ -45,15 +62,11 @@ const Search = (props: Props) => {
           </div>
         </form>
         <div className="search-options">
-          <NavLink to={`/search`} end>
-            Posts
+          <NavLink to={`/search/blogs`} end>
+            Blogs
           </NavLink>
-          <NavLink to={`/search/comments`}>
-            Comments
-          </NavLink>
-          <NavLink to={`/search/profile`}>
-            Profs
-          </NavLink>
+          <NavLink to={`/search/comments`}>Comments</NavLink>
+          <NavLink to={`/search/users`}>Users</NavLink>
         </div>
       </div>
 
