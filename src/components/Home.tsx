@@ -27,7 +27,11 @@ export default function Home({}: Props) {
       _limit: 10,
     },
   });
-  const { data: resData, error, isPending } = useBlogs({ startAt: startAt });
+  const {
+    data: resData,
+    error,
+    isPending,
+  } = useBlogs({ startAt: startAt, custom: "tt" });
 
   return (
     <div className="Home">
@@ -55,9 +59,8 @@ export default function Home({}: Props) {
             date="1684090213669"
           />
         )}
-        {
-          !isPending  &&
-          (<>
+        {!isPending && (
+          <>
             <div className="w-full p-2 px-4 flex justify-around">
               <button
                 className="btn inline "
@@ -78,8 +81,8 @@ export default function Home({}: Props) {
                 Next
               </button>
             </div>
-            </>)
-        }
+          </>
+        )}
         {!isPending && resData && resData?.length !== 0 && (
           <>
             {resData?.map((res) => {
@@ -93,12 +96,10 @@ export default function Home({}: Props) {
                 />
               );
             })}
-            
           </>
         )}
-        {
-          !isPending && resData && resData?.length !== 0 &&
-          (<>
+        {!isPending && resData && resData?.length !== 0 && (
+          <>
             <div className="w-full p-2 px-4 flex justify-around">
               <button
                 className="btn inline "
@@ -119,8 +120,8 @@ export default function Home({}: Props) {
                 Next
               </button>
             </div>
-            </>)
-        }
+          </>
+        )}
       </div>
     </div>
   );

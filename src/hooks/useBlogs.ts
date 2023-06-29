@@ -4,12 +4,15 @@ import axios from "../api/axios";
 
 type Props = {
   startAt: number;
+  custom: string | null;
 };
 
 const useBlogs = (props: Props) => {
   const [data, setData] = useState<IBlog[]>();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
+
+  console.log("props custom", props.custom);
 
   useEffect(() => {
     const controller = new AbortController();
