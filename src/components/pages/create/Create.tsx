@@ -31,7 +31,7 @@ function Create({}: Props) {
       });
 
     alert("Blog Created ^_^");
-    navigate('/')
+    navigate("/");
   };
 
   return (

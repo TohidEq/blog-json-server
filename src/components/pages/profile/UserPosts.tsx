@@ -1,13 +1,11 @@
 import React from "react";
 
 import Card from "../../card/Card";
-import { FaEye, FaPlus } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
-import axios from "../../../api/axios";
 import useBlogs from "../../../hooks/useBlogs";
-import useUser from "../../../hooks/useUser";
+import useBlogsById from "../../../hooks/useBlogsById";
 
 type Props = {
   user_id: string;
@@ -21,20 +19,11 @@ const UserPosts = (props: Props) => {
 
   const [data, setData] = useState<IBlog[]>();
 
-  console.log("test test test", startAt);
-  const res = axios.get("blogs?user_id=" + props.user_id, {
-    params: {
-      _sort: "created_at",
-      _order: "DESC",
-      _start: startAt,
-      _limit: 10,
-    },
-  });
   const {
     data: resData,
     error,
     isPending,
-  } = useBlogs({ startAt: startAt, custom: null });
+  } = useBlogsById({ startAt: startAt, user_id: props.user_id });
 
   return (
     <div className="Home">

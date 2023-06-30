@@ -10,9 +10,6 @@ const useAuth = () => {
     (state: { isAuthenticated: boolean; username: string; id: string }) => state
   );
 
-  console.log("useAuth *");
-  console.log("isAuth: ", state);
-
   return {
     isAuthenticated: state.isAuthenticated,
     username: state.username,

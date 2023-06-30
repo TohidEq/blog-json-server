@@ -31,7 +31,6 @@ const Search = (props: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    console.log("tttt:", url, query, queryString);
     navigate(`/search/${method}?q=${search.current!.value}`);
   };
 

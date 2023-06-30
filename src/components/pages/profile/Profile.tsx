@@ -14,43 +14,43 @@ type Props = {};
 function Profile({}: Props) {
   const { username } = useParams();
   const { data, isPending, error } = useUser({ id: "", username: username });
-  console.log("username: ", username);
-
-  const res = axios.get(`/users?username=${username}`);
-  console.log("res xx:", data);
 
   return (
     <div className="profile">
-      {isPending ||
-        (error && (
-          <MyProfile
-            data={{
-              username: "...",
-              fname: "...",
-              lname: "...",
-              summary: "...",
-              id: "0",
-              email: "",
-              password: "",
-            }}
-          />
-        ))}
-      {data && <MyProfile data={data} />}
+      {(isPending || error) && (
+        <MyProfile
+          data={{
+            username: "...",
+            fname: "...",
+            lname: "...",
+            summary: "...",
+            id: "0",
+            email: "",
+            password: "",
+          }}
+        />
+      )}
 
-      {/* NavigateLinks (Posts|Comments|Likes) */}
-      <div className="user user-navlinks">
-        <NavLink to={`/profile/${username}`} end>
-          Posts
-        </NavLink>
-        <NavLink to={`/profile/${username}/comments`}>Comments</NavLink>
-        <NavLink to={`/profile/${username}/likes`}>Likes</NavLink>
-      </div>
+      {data && (
+        <>
+          <MyProfile data={data} />
 
-      <Routes>
-        <Route path="/" element={<UserPosts user_id={""} />} />
-        <Route path="/comments" element={"comments"} />
-        <Route path="/likes" element={"likes"} />
-      </Routes>
+          {/* NavigateLinks (Posts|Comments|Likes) */}
+          <div className="user user-navlinks">
+            <NavLink to={`/profile/${username}`} end>
+              Posts
+            </NavLink>
+            <NavLink to={`/profile/${username}/comments`}>Comments</NavLink>
+            <NavLink to={`/profile/${username}/likes`}>Likes</NavLink>
+          </div>
+
+          <Routes>
+            <Route path="/" element={<UserPosts user_id={data!.id} />} />
+            <Route path="/comments" element={"comments"} />
+            <Route path="/likes" element={"likes"} />
+          </Routes>
+        </>
+      )}
     </div>
   );
 }

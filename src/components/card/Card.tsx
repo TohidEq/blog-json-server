@@ -46,7 +46,7 @@ const Card = (props: Props) => {
     data: userData,
     error: userError,
     isPending: userIsPending,
-  } = useUser({ id: props.name , username:""});
+  } = useUser({ id: props.name, username: "" });
 
   const date = new Date(props.date);
 

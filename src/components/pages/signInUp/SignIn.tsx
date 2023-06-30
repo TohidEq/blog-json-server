@@ -40,7 +40,7 @@ const SignIn = (props: Props) => {
           console.log("invalid information :D (wrong password)");
         } else {
           // log in
-          console.log("Success!");
+          console.log("Success signin!");
 
           sessionStorage.setItem("user_id", res.data[0].id);
           sessionStorage.setItem("username", res.data[0].username);
@@ -54,9 +54,9 @@ const SignIn = (props: Props) => {
           return <Navigate to="/" replace state={{ from: location }} />;
         }
       });
-      console.log("pass");
+      console.log("pass signin");
     } else {
-      alert("error");
+      alert("error signin");
     }
     // email, passwrd bla bla bla
   };
@@ -68,10 +68,6 @@ const SignIn = (props: Props) => {
     error.passwrd = !validPassword.test(passwrd.current!.value);
 
     setError({ ...error });
-
-    console.log("=======");
-    console.log("email:", error.uName);
-    console.log("pass:", error.passwrd);
 
     return !(error.uName || error.passwrd);
   };

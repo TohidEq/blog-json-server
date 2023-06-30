@@ -18,7 +18,6 @@ export default function Home({}: Props) {
 
   const [data, setData] = useState<IBlog[]>();
 
-  console.log("test test test", startAt);
   const res = axios.get("blogs", {
     params: {
       _sort: "created_at",
@@ -27,11 +26,7 @@ export default function Home({}: Props) {
       _limit: 10,
     },
   });
-  const {
-    data: resData,
-    error,
-    isPending,
-  } = useBlogs({ startAt: startAt, custom: "tt" });
+  const { data: resData, error, isPending } = useBlogs({ startAt: startAt });
 
   return (
     <div className="Home">

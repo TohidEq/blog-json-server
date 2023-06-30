@@ -6,22 +6,17 @@ import { FaUserCircle } from "react-icons/fa";
 
 import useAuth from "../../../hooks/useAuth";
 
-
-import testprofile from '../../../images/profiles/testprofile.jpeg'
+import testprofile from "../../../images/profiles/testprofile.jpeg";
 
 type Props = {
-         data: IUser
-         };
+  data: IUser;
+};
 
 const MyProfile = (props: Props) => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const {id, fname, lname, summary, username} = props.data
-
-  console.log("gololo",id,username,fname,lname,summary);
-  
+  const { id, fname, lname, summary, username } = props.data;
 
   const signOut = () => {
     sessionStorage.clear();
@@ -29,41 +24,36 @@ const MyProfile = (props: Props) => {
     navigate("/sign-in");
   };
 
-   
-  
-  const { isAuthenticated, username:myUsername } = useAuth();
+  const { isAuthenticated, username: myUsername } = useAuth();
 
-  return ( <div className="user">
-
+  return (
+    <div className="user">
       <div className="user-basic-data">
-
         <div className="user-img">
-          <img src={testprofile}/>
+          <img src={testprofile} />
         </div>
-        
+
         <div className="user-names">
           <div className="user-real-name">{`${fname} ${lname}`}</div>
           <div className="username">@{username}</div>
         </div>
-
       </div>
 
       <div className="user-summary">
-        {summary!==""? summary:"Nothing yet :D"} 
+        {summary !== "" ? summary : "Nothing yet :D"}
+      </div>
 
-      </div>  
-
-      {isAuthenticated && myUsername===username && 
+      {isAuthenticated && myUsername === username && (
         <div className="profile-btns">
-          <button className="text-light-red hover:text-opacity-75" onClick={signOut
-          }>
+          <button
+            className="text-light-red hover:text-opacity-75"
+            onClick={signOut}
+          >
             LogOut
           </button>
-          <Link to="/editprofile" >
-            Edit
-          </Link>
+          <Link to="/editprofile">Edit</Link>
         </div>
-      }
+      )}
     </div>
   );
 };

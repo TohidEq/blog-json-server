@@ -28,7 +28,6 @@ const Sidebar = (props: Props) => {
   const { changeMode, mode } = props;
 
   const { isAuthenticated, username } = useAuth();
-  console.log("sidebar, isAuth and isLoading: ", isAuthenticated);
 
   return (
     <aside>
