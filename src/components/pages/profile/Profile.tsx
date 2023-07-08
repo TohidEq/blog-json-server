@@ -9,12 +9,13 @@ import useUser from "../../../hooks/useUser";
 
 import Loading from "../Loading";
 import UserPosts from "./UserPosts";
+import UserComments from "./UserComments";
+import UserLikes from "./UserLikes";
 type Props = {};
 
 function Profile({}: Props) {
   const { username } = useParams();
   const { data, isPending, error } = useUser({ id: "", username: username });
-
   return (
     <div className="profile">
       {(isPending || error) && (
@@ -46,8 +47,11 @@ function Profile({}: Props) {
 
           <Routes>
             <Route path="/" element={<UserPosts user_id={data!.id} />} />
-            <Route path="/comments" element={"comments"} />
-            <Route path="/likes" element={"likes"} />
+            <Route
+              path="/comments"
+              element={<UserComments user_id={data!.id} />}
+            />
+            <Route path="/likes" element={<UserLikes user_id={data!.id} />} />
           </Routes>
         </>
       )}

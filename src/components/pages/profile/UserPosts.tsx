@@ -6,6 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
 import useBlogs from "../../../hooks/useBlogs";
 import useBlogsById from "../../../hooks/useBlogsById";
+import BlogListCard from "../../card/BlogListCard";
 
 type Props = {
   user_id: string;
@@ -67,19 +68,7 @@ const UserPosts = (props: Props) => {
           </>
         )}
         {!isPending && resData && resData?.length !== 0 && (
-          <>
-            {resData?.map((res) => {
-              return (
-                <Card
-                  name={res.user_id}
-                  text={res.text}
-                  likes={11}
-                  comments={11}
-                  date={res.created_at}
-                />
-              );
-            })}
-          </>
+          <BlogListCard data={resData} />
         )}
         {!isPending && resData && resData?.length !== 0 && (
           <>
