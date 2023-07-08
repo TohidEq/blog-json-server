@@ -12,7 +12,6 @@ type Props = {
 };
 
 const Card = (props: Props) => {
-  console.log("(card component) propsssss", props.name);
   if (props.name === "no user") {
     const date = new Date("1688855129323");
     return (

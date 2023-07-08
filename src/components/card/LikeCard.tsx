@@ -14,10 +14,6 @@ const LikeCard = (props: Props) => {
   } = useBlogFinder({ data: props.likeData });
 
   if (!isPending && resData !== undefined) {
-    console.log("finded blog:", resData.id);
-    console.log("is resdata id undefiend?", resData?.id !== undefined);
-    console.log("test", resData);
-
     return (
       <Card
         name={resData.user_id}
