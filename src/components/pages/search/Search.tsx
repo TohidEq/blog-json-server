@@ -2,7 +2,22 @@ import React, { useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 import Card from "../../card/Card";
-import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  BrowserRouter,
+  NavLink,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+import UserLikes from "../profile/UserLikes";
+import useSearch from "../../../hooks/useSearch";
+import UserComments from "../profile/UserComments";
+import UserPosts from "../profile/UserPosts";
+import SearchBlogs from "./SearchBlogs";
+import SearchComments from "./SearchComments";
+import SearchUsers from "./SearchUsers";
 
 type Props = {};
 
@@ -13,6 +28,8 @@ const Search = (props: Props) => {
   console.log("search method:", method);
   const navigate = useNavigate();
 
+  const [startAt, setStartAt] = useState(0);
+
   const search = useRef<HTMLInputElement>(null);
   const [searchQ, setSearchQ] = useState("/search/");
 
@@ -22,9 +39,22 @@ const Search = (props: Props) => {
   // If there are no parameters, this value may be the empty string (i.e. '').
   const queryString = useLocation().search;
   const queryParams = new URLSearchParams(queryString);
-  const query = queryParams.get("q");
+  const query = queryParams.get("q") || sessionStorage.getItem("searchquery");
+  sessionStorage.setItem("searchquery", query!);
+  const url = method + "?q=" + query;
+  const {
+    data: resData,
+    error,
+    isPending,
+  } = useSearch({
+    startAt: startAt,
+    query: url,
+  });
 
-  const url = "http://localhost:3001/" + method + "?q=" + query;
+  console.log("urll:", query === null);
+
+  const location = useLocation();
+  console.log("loc:", location.pathname);
 
   // const { error, data, isPending } = useFetch(url);
 
@@ -51,7 +81,7 @@ const Search = (props: Props) => {
             <div
               className="show-passwrd"
               onClick={() => {
-                console.log(search);
+                console.log("search value:", search.current?.value);
               }}
             >
               <button type="submit">
@@ -61,50 +91,20 @@ const Search = (props: Props) => {
           </div>
         </form>
         <div className="search-options">
-          <NavLink to={`/search/blogs`} end>
+          <NavLink to={`/search/blogs?q=${query}`} end>
             Blogs
           </NavLink>
-          <NavLink to={`/search/comments`}>Comments</NavLink>
-          <NavLink to={`/search/users`}>Users</NavLink>
+          <NavLink to={`/search/comments?q=${query}`}>Comments</NavLink>
+          <NavLink to={`/search/users?q=${query}`}>Users</NavLink>
         </div>
       </div>
 
       <div className="search-result w-fit mx-auto">
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
-        <Card
-          name="Tohid"
-          text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. ditiis vitae. Enim doloribus facilis aliquid ipsa a doloremque?"
-          likes={20}
-          comments={15}
-          date="03/15 12:30"
-        />
+        {!query && "enter something"}
+
+        {query && method === "blogs" && <SearchBlogs url={url} />}
+        {query && method === "comments" && <SearchComments url={url} />}
+        {query && method === "users" && <SearchUsers url={url} />}
       </div>
     </div>
   );
