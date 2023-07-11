@@ -102,9 +102,11 @@ const Search = (props: Props) => {
       <div className="search-result w-fit mx-auto">
         {!query && "enter something"}
 
-        {query && method === "blogs" && <SearchBlogs url={url} />}
-        {query && method === "comments" && <SearchComments url={url} />}
-        {query && method === "users" && <SearchUsers url={url} />}
+        {query && method === "blogs" && <SearchBlogs url={url} text={query} />}
+        {query && method === "comments" && (
+          <SearchComments url={url} text={query} />
+        )}
+        {query && method === "users" && <SearchUsers url={url} text={query} />}
       </div>
     </div>
   );

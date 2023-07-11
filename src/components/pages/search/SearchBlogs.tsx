@@ -6,6 +6,7 @@ import PendingCard from "../../card/PendingCard";
 
 type Props = {
   url: string;
+  text: string;
 };
 
 const SearchBlogs = (props: Props) => {
@@ -22,7 +23,7 @@ const SearchBlogs = (props: Props) => {
     <div className="Home">
       <div className=" relative sm:w-fit sm:mx-auto">
         <div className="page py-4">
-          <h2 className=" text-center">Home</h2>
+          <h2 className=" text-center">{props.text}</h2>
           <h2 className=" text-center">
             {resData && resData?.length === 0 && "Ops... no more blogs"}
           </h2>

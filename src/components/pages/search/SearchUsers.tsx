@@ -3,9 +3,12 @@ import useSearchComment from "../../../hooks/useSearchComment";
 import Card from "../../card/Card";
 import CommentCard from "../../card/CommentCard";
 import PendingCard from "../../card/PendingCard";
+import useSearchUser from "../../../hooks/useSearchUser";
+import UserCard from "../../card/UserCard";
 
 type Props = {
   url: string;
+  text: string;
 };
 
 const SearchUsers = (props: Props) => {
@@ -16,13 +19,13 @@ const SearchUsers = (props: Props) => {
     data: resData,
     error,
     isPending,
-  } = useSearchComment({ startAt: startAt, query: props.url });
+  } = useSearchUser({ startAt: startAt, query: props.url });
 
   return (
     <div className="Home">
       <div className=" relative sm:w-fit sm:mx-auto">
         <div className="page py-4">
-          <h2 className=" text-center">Home</h2>
+          <h2 className=" text-center">{props.text}</h2>
           <h2 className=" text-center">
             {resData && resData?.length === 0 && "Ops... no more blogs"}
           </h2>
@@ -55,7 +58,7 @@ const SearchUsers = (props: Props) => {
         {!isPending && resData && resData?.length !== 0 && (
           <>
             {resData?.map((res) => {
-              return <CommentCard data={res} />;
+              return <UserCard data={res} />;
             })}
           </>
         )}

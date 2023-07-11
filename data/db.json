@@ -1,15 +1,6 @@
 {
   "users": [
     {
-      "id": "no user",
-      "username": ". . .",
-      "fname": ". . .",
-      "lname": ". . .",
-      "email": "test@gmail.com",
-      "password": "A@t123456",
-      "summary": ""
-    },
-    {
       "id": "1",
       "username": "Tohideq",
       "fname": "tohid",
