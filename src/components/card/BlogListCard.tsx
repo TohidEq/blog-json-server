@@ -9,15 +9,7 @@ const BlogListCard = (props: Props) => {
   return (
     <>
       {props.data?.map((res) => {
-        return (
-          <Card
-            name={res.user_id}
-            text={res.text}
-            likes={11}
-            comments={11}
-            date={res.created_at}
-          />
-        );
+        return <Card data={res} />;
       })}
     </>
   );

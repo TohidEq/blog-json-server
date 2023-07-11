@@ -4,49 +4,17 @@ import { FaUser, FaComment, FaHeart } from "react-icons/fa";
 import useUser from "../../hooks/useUser";
 
 type Props = {
-  name: string;
-  text: string;
-  date: string; // or (Date)? idk :D whatever u like
-  likes: number;
-  comments: number;
+  data: IBlog;
 };
 
 const Card = (props: Props) => {
-  if (props.name === "no user") {
-    const date = new Date("1688855129323");
-    return (
-      <>
-        <div className="card">
-          <Link to={"/#"} className="profile">
-            <FaUser className="border-[1px] sm:border-2" />
-            <span className="profile-name">. . .</span>
-          </Link>
-          <p className="text">.. .. .. ..</p>
-          <div className="post-information">
-            <span className="date">../.. ..:..</span>
-            <div className="icons">
-              <Link to={"#"}>
-                <span>..</span>
-                <FaComment />
-              </Link>
-              <Link to={"#"}>
-                <span>..</span>
-                <FaHeart />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-
   const {
     data: userData,
     error: userError,
     isPending: userIsPending,
-  } = useUser({ id: props.name, username: "" });
+  } = useUser({ id: props.data.user_id, username: "" });
 
-  const date = new Date(props.date);
+  const date = new Date(props.data.created_at);
 
   return (
     <div className="card">
@@ -57,7 +25,7 @@ const Card = (props: Props) => {
           {userIsPending && "..."}
         </span>
       </Link>
-      <p className="text">{props.text}</p>
+      <p className="text">{props.data.text}</p>
       <div className="post-information">
         <span className="date">
           {date.getMonth().toString() +
@@ -70,11 +38,13 @@ const Card = (props: Props) => {
         </span>
         <div className="icons">
           <Link to={"/"}>
-            <span>{props.likes}</span>
+            <span>11</span>
+            {/* <span>{props.likes}</span> */}
             <FaComment />
           </Link>
           <Link to={"/"}>
-            <span>{props.comments}</span>
+            <span>11</span>
+            {/* <span>{props.comments}</span> */}
             <FaHeart />
           </Link>
         </div>

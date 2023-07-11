@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import useSearch from "../../../hooks/useSearch";
+import useSearch from "../../../hooks/useSearchBlog";
 import Card from "../../card/Card";
+import useSearchBlog from "../../../hooks/useSearchBlog";
+import PendingCard from "../../card/PendingCard";
 
 type Props = {
   url: string;
@@ -10,13 +12,11 @@ const SearchBlogs = (props: Props) => {
   const [startAt, setStartAt] = useState(0);
   // `blogs?_sort=created_at&_order=DESC&_start=${startAt}&_limit=10`
 
-  const [data, setData] = useState<IBlog[]>();
-
   const {
     data: resData,
     error,
     isPending,
-  } = useSearch({ startAt: startAt, query: props.url });
+  } = useSearchBlog({ startAt: startAt, query: props.url });
 
   return (
     <div className="Home">
@@ -27,15 +27,7 @@ const SearchBlogs = (props: Props) => {
             {resData && resData?.length === 0 && "Ops... no more blogs"}
           </h2>
         </div>
-        {isPending && (
-          <Card
-            name="no user"
-            text=". . ."
-            likes={99}
-            comments={99}
-            date="1684090213669"
-          />
-        )}
+        {isPending && <PendingCard />}
         {!isPending && (
           <>
             <div className="w-full p-2 px-4 flex justify-around">
@@ -63,15 +55,7 @@ const SearchBlogs = (props: Props) => {
         {!isPending && resData && resData?.length !== 0 && (
           <>
             {resData?.map((res) => {
-              return (
-                <Card
-                  name={res.user_id}
-                  text={res.text}
-                  likes={11}
-                  comments={11}
-                  date={res.created_at}
-                />
-              );
+              return <Card data={res} />;
             })}
           </>
         )}

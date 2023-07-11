@@ -7,6 +7,7 @@ import { useState } from "react";
 import useBlogs from "../../../hooks/useBlogs";
 import useBlogsById from "../../../hooks/useBlogsById";
 import BlogListCard from "../../card/BlogListCard";
+import PendingCard from "../../card/PendingCard";
 
 type Props = {
   user_id: string;
@@ -34,15 +35,7 @@ const UserPosts = (props: Props) => {
             <h2 className=" text-center">Ops... no more blogs</h2>
           </div>
         )}
-        {isPending && (
-          <Card
-            name="no user"
-            text=". . ."
-            likes={99}
-            comments={99}
-            date="1684090213669"
-          />
-        )}
+        {isPending && <PendingCard />}
         {!isPending && (
           <>
             <div className="w-full p-2 px-4 flex justify-around">

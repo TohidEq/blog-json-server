@@ -12,7 +12,7 @@ import {
   useParams,
 } from "react-router-dom";
 import UserLikes from "../profile/UserLikes";
-import useSearch from "../../../hooks/useSearch";
+import useSearch from "../../../hooks/useSearchBlog";
 import UserComments from "../profile/UserComments";
 import UserPosts from "../profile/UserPosts";
 import SearchBlogs from "./SearchBlogs";

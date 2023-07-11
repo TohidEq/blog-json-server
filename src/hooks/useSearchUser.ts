@@ -7,8 +7,8 @@ type Props = {
   startAt: number;
 };
 
-const useSearch = (props: Props) => {
-  const [data, setData] = useState<IBlog[]>();
+const useSearchUser = (props: Props) => {
+  const [data, setData] = useState<IUser[]>();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
@@ -59,4 +59,4 @@ const useSearch = (props: Props) => {
   return { data, isPending, error };
 };
 
-export default useSearch;
+export default useSearchUser;

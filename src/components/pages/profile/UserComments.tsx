@@ -7,6 +7,7 @@ import { useState } from "react";
 import useBlogs from "../../../hooks/useBlogs";
 import useBlogsById from "../../../hooks/useBlogsById";
 import useCommentsById from "../../../hooks/useCommentsById";
+import PendingCard from "../../card/PendingCard";
 
 type Props = {
   user_id: string;
@@ -34,15 +35,7 @@ const UserComments = (props: Props) => {
             <h2 className=" text-center">Ops... no more blogs</h2>
           </div>
         )}
-        {isPending && (
-          <Card
-            name="no user"
-            text=". . ."
-            likes={99}
-            comments={99}
-            date="1684090213669"
-          />
-        )}
+        {isPending && <PendingCard />}
         {!isPending && (
           <>
             <div className="w-full p-2 px-4 flex justify-around">
@@ -70,15 +63,7 @@ const UserComments = (props: Props) => {
         {!isPending && resData && resData?.length !== 0 && (
           <>
             {resData?.map((res) => {
-              return (
-                <Card
-                  name={res.user_id}
-                  text={res.text}
-                  likes={11}
-                  comments={11}
-                  date={res.created_at}
-                />
-              );
+              return <Card data={res} />;
             })}
           </>
         )}
