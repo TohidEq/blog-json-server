@@ -8,6 +8,7 @@ import useBlogs from "../../../hooks/useBlogs";
 import useBlogsById from "../../../hooks/useBlogsById";
 import useCommentsById from "../../../hooks/useCommentsById";
 import PendingCard from "../../card/PendingCard";
+import CommentCard from "../../card/CommentCard";
 
 type Props = {
   user_id: string;
@@ -63,7 +64,7 @@ const UserComments = (props: Props) => {
         {!isPending && resData && resData?.length !== 0 && (
           <>
             {resData?.map((res) => {
-              return <Card data={res} />;
+              return <CommentCard data={res} />;
             })}
           </>
         )}
