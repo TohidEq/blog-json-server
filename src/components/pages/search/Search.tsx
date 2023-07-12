@@ -25,7 +25,6 @@ const Search = (props: Props) => {
   const { method } =
     useParams().method !== undefined ? useParams() : { method: "blogs" }; // default value
 
-  console.log("search method:", method);
   const navigate = useNavigate();
 
   const [startAt, setStartAt] = useState(0);
@@ -51,10 +50,7 @@ const Search = (props: Props) => {
     query: url,
   });
 
-  console.log("urll:", query === null);
-
   const location = useLocation();
-  console.log("loc:", location.pathname);
 
   // const { error, data, isPending } = useFetch(url);
 

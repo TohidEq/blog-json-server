@@ -12,7 +12,7 @@ const LikeCard = (props: Props) => {
     data: resData,
     error,
     isPending,
-  } = useBlogFinder({ data: props.likeData });
+  } = useBlogFinder({ blog_id: props.likeData.blog_id });
 
   if (!isPending && resData !== undefined) {
     return <Card data={resData} />;

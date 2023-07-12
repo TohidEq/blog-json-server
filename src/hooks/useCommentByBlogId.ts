@@ -3,7 +3,7 @@ import axios from "../api/axios";
 
 type Props = {
   startAt: number;
-  user_id: string;
+  blog_id: string;
 };
 
 const useCommentsByBlogId = (props: Props) => {
@@ -18,7 +18,7 @@ const useCommentsByBlogId = (props: Props) => {
       setIsPending(true);
       try {
         await axios
-          .get(`comments?blog_id=${props.user_id}`, {
+          .get(`comments?blog_id=${props.blog_id}`, {
             params: {
               _sort: "created_at",
               _order: "DESC",

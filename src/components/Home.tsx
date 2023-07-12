@@ -19,14 +19,6 @@ export default function Home({}: Props) {
 
   const [data, setData] = useState<IBlog[]>();
 
-  const res = axios.get("blogs", {
-    params: {
-      _sort: "created_at",
-      _order: "DESC",
-      _start: startAt,
-      _limit: 10,
-    },
-  });
   const { data: resData, error, isPending } = useBlogs({ startAt: startAt });
 
   return (

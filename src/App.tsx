@@ -19,6 +19,7 @@ import Home from "./components/Home";
 import { Provider } from "react-redux";
 import ProtectedSignInUp from "./components/pages/signInUp/ProtectedSignInUp";
 import MyUserLikes from "./components/pages/MyUserLikes";
+import Blog from "./components/pages/blog/Blog";
 
 function App() {
   const { mode, changeMode } = useTheme();
@@ -55,6 +56,8 @@ function App() {
 
               <Route path="/search/" element={<Search />} />
               <Route path="/search/:method/" element={<Search />} />
+
+              <Route path="/blog/:blog_id/" element={<Blog />} />
 
               <Route path="/about-us" element={<AboutUs />} />
 

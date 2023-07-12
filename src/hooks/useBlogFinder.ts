@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 
 type Props = {
-  data: ILike;
+  blog_id: string;
 };
 
 const useBlogFinder = (props: Props) => {
@@ -17,7 +17,7 @@ const useBlogFinder = (props: Props) => {
       setIsPending(true);
       try {
         await axios
-          .get(`blogs?id=${props.data.blog_id}`, {
+          .get(`blogs?id=${props.blog_id}`, {
             params: {
               _sort: "created_at",
               _order: "DESC",
@@ -30,7 +30,6 @@ const useBlogFinder = (props: Props) => {
             const json = res.data;
             setError(null);
             setData(json[0]);
-            console.log("blogg:", json);
             setIsPending(false);
           })
           .catch((error) => {
@@ -53,7 +52,7 @@ const useBlogFinder = (props: Props) => {
     return () => {
       controller.abort();
     };
-  }, [props.data]);
+  }, [props.blog_id]);
 
   return { data, isPending, error };
 };
