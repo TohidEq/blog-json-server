@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import axios from "../api/axios";
 
 type Props = {
   blog_id: string;
 };
 
-const useCommentsByBlogId = (props: Props) => {
-  const [data, setData] = useState<IComment[]>();
+const useLikesCounterByBlogId = (props: Props) => {
+  const [data, setData] = useState<number>();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
@@ -17,19 +18,14 @@ const useCommentsByBlogId = (props: Props) => {
       setIsPending(true);
       try {
         await axios
-          .get(`comments?blog_id=${props.blog_id}`, {
-            params: {
-              _sort: "created_at",
-              _order: "DESC",
-              _start: props.startAt,
-              _limit: 10,
-            },
+          .get(`likes?blog_id=${props.blog_id}`, {
+            params: {},
             signal: controller.signal,
           })
           .then((res) => {
             const json = res.data;
             setError(null);
-            setData(json);
+            setData(json.length);
             setIsPending(false);
           })
           .catch((error) => {
@@ -52,9 +48,9 @@ const useCommentsByBlogId = (props: Props) => {
     return () => {
       controller.abort();
     };
-  }, [props.startAt]);
+  }, [props.blog_id]);
 
   return { data, isPending, error };
 };
 
-export default useCommentsByBlogId;
+export default useLikesCounterByBlogId;

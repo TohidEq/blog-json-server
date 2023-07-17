@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaComment, FaHeart } from "react-icons/fa";
 import useUser from "../../hooks/useUser";
+import LikeCommentCounter from "./LikesAndCommentsCounter/LikeCommentCounter";
 
 type Props = {
   data: IBlog;
@@ -36,18 +37,7 @@ const Card = (props: Props) => {
             ":" +
             date.getMinutes()}
         </span>
-        <div className="icons">
-          <Link to={"/"}>
-            <span>11</span>
-            {/* <span>{props.likes}</span> */}
-            <FaComment />
-          </Link>
-          <Link to={"/"}>
-            <span>11</span>
-            {/* <span>{props.comments}</span> */}
-            <FaHeart />
-          </Link>
-        </div>
+        <LikeCommentCounter blog_id={props.data.id} />
       </div>
     </div>
   );
