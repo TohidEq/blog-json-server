@@ -77,6 +77,9 @@
 .card .post-information .date {
   @apply text-light-dark-2;
 }
+.card .post-information .delete-item {
+  @apply text-light-red hover:text-opacity-70;
+}
 
 /* dark mode */
 .dark .card .profile-name {

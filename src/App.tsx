@@ -21,6 +21,8 @@ import ProtectedSignInUp from "./components/pages/signInUp/ProtectedSignInUp";
 import MyUserLikes from "./components/pages/MyUserLikes";
 import Blog from "./components/pages/blog/Blog";
 import NewLike from "./components/card/LikesAndCommentsCounter/NewLike";
+import DeleteBlog from "./components/pages/blog/DeleteBlog";
+import DeleteComment from "./components/pages/blog/DeleteComment";
 
 function App() {
   const { mode, changeMode } = useTheme();
@@ -59,7 +61,31 @@ function App() {
               <Route path="/search/:method/" element={<Search />} />
 
               <Route path="/blog/:blog_id/" element={<Blog />} />
-              <Route path="/like/:blog_id/" element={<NewLike />} />
+              <Route
+                path="/like/:blog_id/"
+                element={
+                  <ProtectedRoute>
+                    <NewLike />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/delete/blog/:blog_id/"
+                element={
+                  <ProtectedRoute>
+                    <DeleteBlog />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/delete/comment/:comment_id/"
+                element={
+                  <ProtectedRoute>
+                    <DeleteComment />
+                  </ProtectedRoute>
+                }
+              />
 
               <Route path="/about-us" element={<AboutUs />} />
 

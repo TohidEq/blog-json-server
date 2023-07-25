@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import { FaUser, FaComment, FaHeart } from "react-icons/fa";
 import useUser from "../../hooks/useUser";
 import { nanoid } from "nanoid";
+import useAuth from "../../hooks/useAuth";
 
 type Props = {
   data: IComment;
 };
 
 const CommentCard = (props: Props) => {
+  const { isAuthenticated, id, username } = useAuth();
+
   if (props.data.id === "no user") {
     const date = new Date("1688855129323");
     return (
@@ -43,7 +46,7 @@ const CommentCard = (props: Props) => {
     data: userData,
     error: userError,
     isPending: userIsPending,
-  } = useUser({ id: props.data.id, username: "" });
+  } = useUser({ id: props.data.user_id, username: "" });
 
   const date = new Date(props.data.created_at);
 
@@ -74,6 +77,13 @@ const CommentCard = (props: Props) => {
            */}
         </div>
       </div>
+      {isAuthenticated && props.data.user_id === id && (
+        <div className="post-information">
+          <Link to={`/delete/comment/${props.data.id}`} className="delete-item">
+            Delete
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
