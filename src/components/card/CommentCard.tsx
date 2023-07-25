@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaUser, FaComment, FaHeart } from "react-icons/fa";
 import useUser from "../../hooks/useUser";
+import { nanoid } from "nanoid";
 
 type Props = {
   data: IComment;
@@ -13,7 +14,7 @@ const CommentCard = (props: Props) => {
     return (
       <>
         {"123456".split("").map(() => (
-          <div className="card">
+          <div className="card" key={nanoid()}>
             <Link to={"/#"} className="profile">
               <FaUser className="border-[1px] sm:border-2" />
               <span className="profile-name">. . .</span>
@@ -47,7 +48,7 @@ const CommentCard = (props: Props) => {
   const date = new Date(props.data.created_at);
 
   return (
-    <div className="card">
+    <div className="card" key={nanoid()}>
       <Link to={"/some-user-profile"} className="profile">
         <FaUser className="border-[1px] sm:border-2" />
         <span className="profile-name">

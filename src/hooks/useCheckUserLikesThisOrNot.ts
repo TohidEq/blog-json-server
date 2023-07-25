@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 
 type Props = {
-  startAt: number;
+  user_id: string;
   blog_id: string;
 };
 
-const useCommentsByBlogId = (props: Props) => {
-  const [data, setData] = useState<IComment[]>();
+const useCheckUserLikesThisOrNot = (props: Props) => {
+  const [data, setData] = useState<ILike[]>();
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
@@ -18,17 +18,15 @@ const useCommentsByBlogId = (props: Props) => {
       setIsPending(true);
       try {
         await axios
-          .get(`comments?blog_id=${props.blog_id}`, {
-            params: {
-              _sort: "created_at",
-              _order: "DESC",
-              _start: props.startAt,
-              _limit: 10,
-            },
+          .get(`likes?user_id=${props.user_id}&blog_id=${props.blog_id}`, {
+            params: {},
             signal: controller.signal,
           })
           .then((res) => {
-            const json = res.data;
+            const json: ILike[] = res.data;
+            json.forEach((element) => {
+              console.log("testee", element);
+            });
             setError(null);
             setData(json);
             setIsPending(false);
@@ -53,9 +51,9 @@ const useCommentsByBlogId = (props: Props) => {
     return () => {
       controller.abort();
     };
-  }, [props.startAt]);
+  }, []);
 
   return { data, isPending, error };
 };
 
-export default useCommentsByBlogId;
+export default useCheckUserLikesThisOrNot;

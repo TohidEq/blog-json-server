@@ -2,6 +2,7 @@ import React from "react";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useLikesCounterByBlogId from "../../../hooks/useLikesCounterByBlogId";
+import useAuth from "../../../hooks/useAuth";
 
 type Props = { blog_id: string };
 
@@ -11,6 +12,8 @@ const LikesCounter = (props: Props) => {
     error,
     isPending,
   } = useLikesCounterByBlogId({ blog_id: props.blog_id! });
+
+  const { isAuthenticated, username: myUsername, id } = useAuth();
 
   if (isPending || error)
     return (
@@ -22,7 +25,7 @@ const LikesCounter = (props: Props) => {
     );
   else
     return (
-      <Link to={"/blog/" + props.blog_id}>
+      <Link to={`/like/${props.blog_id}`}>
         <span>{resData}</span>
         {/* <span>{props.likes}</span> */}
         <FaHeart />
