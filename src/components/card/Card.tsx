@@ -22,7 +22,7 @@ const Card = (props: Props) => {
 
   return (
     <div className="card">
-      <Link to={"/some-user-profile"} className="profile">
+      <Link to={`/profile/${userData?.username}`} className="profile">
         <FaUser className="border-[1px] sm:border-2" />
         <span className="profile-name">
           {userData?.username}
