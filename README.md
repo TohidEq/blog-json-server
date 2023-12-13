@@ -1,4 +1,4 @@
-# Blog (Nhost)
+# Blog (json-server)
 
 simple blog, users can sign in/up/out and create new posts. other users can like them or give them a comment.
 
